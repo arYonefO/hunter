@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Entry do
   before { @entry = Entry.new }
 
+  subject { @entry }
+
   it { should respond_to(:url) }
   it { should respond_to(:longitude) }
   it { should respond_to(:latitude) }

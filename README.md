@@ -10,4 +10,5 @@ Conditions:
 -Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 Priority:
+-Add spork and factorygirl to facilitate testing
 -Build background worker and chron job to collect the datas off IG
