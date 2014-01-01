@@ -1,12 +1,13 @@
 namespace :db do
   desc "Poll instagram for appropriate data"
   task populate: :environment do
-    # chase_tag('rsa_graffiti')
-    chase_user('gabriels_twin')
+    chase_tag('rsa_graffiti')
+    chase_tag('sfx_graffiti')
+    chase_user('instagrafite')
   end
 end
 
-def chase_rsa(tag)
+def chase_tag(tag)
   api_response = Instagram.tag_recent_media(tag)
   reformatted_response = reformat_datashape(api_response)
   put_response_into_database(reformatted_response)
