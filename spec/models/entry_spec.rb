@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Entry do
-  before { @entry = Entry.new }
+  let(:entry) { FactoryGirl.create(:entry) }
 
-  subject { @entry }
+  subject { entry }
 
   it { should respond_to(:url) }
   it { should respond_to(:longitude) }

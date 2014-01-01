@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Tag do
-  before { @tag = Tag.new }
+  let(:tag) { FactoryGirl.create(:tag) }
 
-  subject { @tag}
+  subject { tag }
 
   it { should respond_to(:label) }
   it { should respond_to(:entries) }
