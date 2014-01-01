@@ -20,5 +20,18 @@ describe Entry do
   it { should validate_presence_of(:lng) }
   it { should validate_presence_of(:lat) }
 
+  describe "When the longitude and latitude is zero" do
+    before do
+      entry.lng = 0
+      entry.lat = 0
+    end
 
+    it { should_not be_valid }
+  end
+
+  describe "When adding tags" do
+    before do
+      entry.tags.build("")
+    end
+  end
 end
