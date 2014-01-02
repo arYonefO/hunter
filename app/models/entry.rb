@@ -19,7 +19,6 @@ class Entry < ActiveRecord::Base
     [lat, lng]
   end
 
-
   def self.chase_tag(tag)
     Entry.ingest(Instagram.tag_recent_media(tag))
   end
@@ -66,7 +65,7 @@ class Entry < ActiveRecord::Base
     instagram_response = Instagram.user_recent_media(user_id)
     Entry.ingest(instagram_response)
     p next_page_max_id = instagram_response.pagination.next_max_id
-    while !next_page_max_id.nil?
+    until next_page_max_id.nil?
       newest_page_response = Instagram.user_recent_media(user_id, :max_id => next_page_max_id )
       Entry.ingest(newest_page_response)
       p "This is the max id: #{next_page_max_id = newest_page_response.pagination.next_max_id}"
