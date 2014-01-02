@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
 gem 'whenever'
+gem 'geocoder'
 
 group :doc do
   gem 'sdoc', require: false
