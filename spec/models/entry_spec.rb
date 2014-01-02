@@ -13,6 +13,7 @@ describe Entry do
   it { should respond_to(:lng) }
   it { should respond_to(:lat) }
   it { should respond_to(:prox) }
+  it { should respond_to(:location) }
 
   it { should be_valid}
 
@@ -30,9 +31,10 @@ describe Entry do
     it { should_not be_valid }
   end
 
-  describe "When adding tags" do
-    before do
-      entry.tags.build("")
+  describe "location" do
+    it "should return the correct format of coordinates" do
+      this_entry = Entry.new(lng: 34.4454, lat: 53.2352)
+      expect(this_entry.location).to eq [this_entry.lat, this_entry.lng]
     end
   end
 end

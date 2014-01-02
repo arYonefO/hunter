@@ -15,6 +15,10 @@ class Entry < ActiveRecord::Base
   validates_with NullCheck
   geocoded_by :latitude => :lat, :longitude => :lng
 
+  def location
+    [lat, lng]
+  end
+
 
   def self.chase_tag(tag)
     Entry.ingest(Instagram.tag_recent_media(tag))
