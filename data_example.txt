@@ -1,0 +1,64 @@
+
+
+#<Hashie::Mash attribution=nil
+
+caption=
+
+#<Hashie::Mash created_time="1388537354"
+
+from=
+
+#<Hashie::Mash full_name="chaunceyjacks" id="145659171" profile_picture="http://images.ak.instagram.com/profiles/profile_145659171_75sq_1378881021.jpg" username="chaunceyjacks"> id="623418973240767423" text="Eve #spedoty #selfportraiteverydayoftheyear #mymoodles #marker #moleskine #ink #paper #drawing #art #artoftheday #graphic #design #tshirt #illustration #dailydose #selfie #newyear">
+
+comments=
+
+#<Hashie::Mash count=4
+
+data=[
+
+#<Hashie::Mash created_time="1388537485" from=
+
+#<Hashie::Mash full_name="chaunceyjacks" id="145659171" profile_picture="http://images.ak.instagram.com/profiles/profile_145659171_75sq_1378881021.jpg" username="chaunceyjacks"> id="623420067987664907" text="#inspired by #streetart #streetartla #graffiti #rsa_graffiti #morley #gregorysiff #banksy #poetry #popart #blessings #wallfilth #egonschiele">,
+
+#<Hashie::Mash created_time="1388549224" from=
+
+#<Hashie::Mash full_name="Staring at the Walls" id="329980218" profile_picture="http://images.ak.instagram.com/profiles/profile_329980218_75sq_1375528040.jpg" username="likilagushka"> id="623518543970906487" text="A thing of beauty... Happy new year!! 🌹✨🌹✨🌹">,
+
+#<Hashie::Mash created_time="1388550543" from=
+
+#<Hashie::Mash full_name="chaunceyjacks" id="145659171" profile_picture="http://images.ak.instagram.com/profiles/profile_145659171_75sq_1378881021.jpg" username="chaunceyjacks"> id="623529611883524247" text="@likilagushka this piece was inspired by your poems! They are always so soulful...💛✨💛🌸💛✨💛">,
+
+#<Hashie::Mash created_time="1388550566" from=
+
+#<Hashie::Mash full_name="chaunceyjacks" id="145659171" profile_picture="http://images.ak.instagram.com/profiles/profile_145659171_75sq_1378881021.jpg" username="chaunceyjacks"> id="623529806088188067" text="@likilagushka Happy New Year!!">]> created_time="1388537354" filter="Brannan" id="623418972905222192_145659171"
+
+images=
+
+#<Hashie::Mash low_resolution=
+
+#<Hashie::Mash height=306 url="http://distilleryimage10.s3.amazonaws.com/4cc07228727e11e3b5aa12644b575dea_6.jpg" width=306>
+
+standard_resolution=
+
+#<Hashie::Mash height=640 url="http://distilleryimage10.s3.amazonaws.com/4cc07228727e11e3b5aa12644b575dea_8.jpg" width=640>
+
+thumbnail=
+
+#<Hashie::Mash height=150 url="http://distilleryimage10.s3.amazonaws.com/4cc07228727e11e3b5aa12644b575dea_5.jpg" width=150>>
+
+likes=
+
+#<Hashie::Mash count=21 data=[
+
+#<Hashie::Mash full_name="Rosemary" id="4487771" profile_picture="http://images.ak.instagram.com/profiles/profile_4487771_75sq_1381159106.jpg" username="roro_baby">,
+
+#<Hashie::Mash full_name="[b-l-m]" id="788883235" profile_picture="http://images.ak.instagram.com/profiles/profile_788883235_75sq_1386790408.jpg" username="blmpoems">,
+
+#<Hashie::Mash full_name="Mari Crosara" id="229127205" profile_picture="http://images.ak.instagram.com/profiles/profile_229127205_75sq_1382301894.jpg" username="maricrosara">,
+
+#<Hashie::Mash full_name="Addie Markowitz" id="239713870" profile_picture="http://images.ak.instagram.com/profiles/profile_239713870_75sq_1368516762.jpg" username="sweetadelae">]> link="http://instagram.com/p/im1EC6QTAw/" location=
+
+#<Hashie::Mash latitude=34.050333333 longitude=-118.320666667>
+tags=["egonschiele", "art", "streetart", "moleskine", "banksy", "selfie", "selfportraiteverydayoftheyear", "illustration", "popart", "tshirt", "paper", "design", "gregorysiff", "ink", "marker", "spedoty", "mymoodles", "graphic", "wallfilth", "morley", "inspired", "poetry", "artoftheday", "streetartla", "blessings", "rsa_graffiti", "dailydose", "newyear", "graffiti", "drawing"] type="image" user=
+
+#<Hashie::Mash bio="" full_name="chaunceyjacks" id="145659171" profile_picture="http://images.ak.instagram.com/profiles/profile_145659171_75sq_1378881021.jpg" username="chaunceyjacks" website=""> users_in_photo=[]>
