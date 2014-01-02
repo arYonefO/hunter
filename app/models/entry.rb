@@ -55,4 +55,17 @@ class Entry < ActiveRecord::Base
       p "record saved!" if record.save
     end
   end
+
+  def self.clean_them_out(user)
+    user_id = Instagram.user_search(user)[0][:id]
+    instagram_response = Instagram.user_recent_media(user_id)
+    Entry.ingest(instagram_response)
+    p next_page_max_id = instagram_response.pagination.next_max_id
+    while !next_page_max_id.nil?
+      newest_page_response = Instagram.user_recent_media(user_id, :max_id => next_page_max_id )
+      Entry.ingest(newest_page_response)
+      p "This is the max id: #{next_page_max_id = newest_page_response.pagination.next_max_id}"
+      p 'another page'
+    end
+  end
 end

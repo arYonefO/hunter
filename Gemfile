@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'pg'
+gem 'whenever'
 
 group :doc do
   gem 'sdoc', require: false

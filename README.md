@@ -10,5 +10,12 @@ Conditions:
 -Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 Priority:
+-See if Geocoder can determine the promixity of DB entries to one another
+-IF GEOCODE WORKS: Add promixity to the Entry table
+
+Done:
 -Add spork and factorygirl to facilitate testing
--Build background worker and chron job to collect the datas off IG
+-Build data-miner-tag
+-Sort out some sort of chron job to collect the datas off IG
+-Build data-miner-user
+-Extend data-miner-user to grab all records from a user
