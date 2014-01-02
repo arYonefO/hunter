@@ -12,6 +12,7 @@ describe Entry do
   it { should respond_to(:tags) }
   it { should respond_to(:lng) }
   it { should respond_to(:lat) }
+  it { should respond_to(:prox) }
 
   it { should be_valid}
 

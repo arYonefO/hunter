@@ -13,6 +13,7 @@ class Entry < ActiveRecord::Base
   validates :lng, presence: true
   validates :lat, presence: true
   validates_with NullCheck
+  geocoded_by :latitude => :lat, :longitude => :lng
 
 
   def self.chase_tag(tag)
