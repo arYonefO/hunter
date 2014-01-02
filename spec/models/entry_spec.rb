@@ -37,4 +37,19 @@ describe Entry do
       expect(this_entry.location).to eq [this_entry.latitude, this_entry.longitude]
     end
   end
+
+  describe "proximity count" do
+
+    describe "should return zero if there are no nearby entries" do
+      its(:prox) { should eq 0 }
+    end
+
+    describe "should return the correct number of nearby entries" do
+      let!(:entry1) { FactoryGirl.create(:entry) }
+      let!(:entry2) { FactoryGirl.create(:entry) }
+      let!(:entry3) { FactoryGirl.create(:entry) }
+      let!(:entry4) { FactoryGirl.create(:entry, longitude: 34.4454, latitude: 53.2352) }
+      its(:prox) { should eq 3 }
+    end
+  end
 end
