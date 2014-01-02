@@ -1,6 +1,6 @@
 class NullCheck < ActiveModel::Validator
   def validate(record)
-    if record.lat == 0 && record.lng == 0
+    if record.latitude == 0 && record.longitude == 0
       record.errors[:base] << "Another entry from Null Island"
     end
   end
@@ -10,13 +10,26 @@ class Entry < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   validates :url, presence: true, uniqueness: true
-  validates :lng, presence: true
-  validates :lat, presence: true
+  validates :longitude, presence: true
+  validates :latitude, presence: true
   validates_with NullCheck
-  geocoded_by :latitude => :lat, :longitude => :lng
+  geocoded_by :location
+  after_validation :proximity_score
 
   def location
-    [lat, lng]
+    [latitude.to_f, longitude.to_f]
+  end
+
+  def self.prox_the_entries
+    ordered_entries = Entry.all.sort_by(&:updated_at)
+    ordered_entries.each do |entry|
+      entry.proximity_score
+    end
+  end
+
+  def proximity_score
+    nearby_entries_count = Entry.near(self.location, 1).count
+    self.update_attribute(:prox, nearby_entries_count)
   end
 
   def self.chase_tag(tag)
@@ -37,8 +50,8 @@ class Entry < ActiveRecord::Base
     instagram_response.reject!{|entry| entry[:location].nil?}
     instagram_response.map! do |entry|
       entry_creation_args = {}
-      entry_creation_args[:lat]             = entry[:location][:latitude]
-      entry_creation_args[:lng]             = entry[:location][:longitude]
+      entry_creation_args[:latitude]        = entry[:location][:latitude]
+      entry_creation_args[:longitude]       = entry[:location][:longitude]
       entry_creation_args[:likes]           = entry[:likes][:count]
       entry_creation_args[:url]             = entry[:link]
       entry_creation_args[:posted_at]       = entry[:created_time]
