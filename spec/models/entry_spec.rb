@@ -67,6 +67,14 @@ describe Entry do
         tags: ['floops', 'cotton', 'memos']
       },
       {
+        location: { latitude: 34.34555, longitude: 42.42555 },
+        likes: { count: 7 },
+        link: 'www.instawoop.com/978adadsfgadfg9hadg9/',
+        created_time: "2014-01-02 11:03:17",
+        images: { standard_resolution: {url: 'www.instawoop.com/978adfg9hadsag9/'}, thumbnail: {url: 'www.instawoop.com/978adfg9hadsag9/'} },
+        tags: ['floops', 'cotton', 'memos']
+      },
+      {
         location: nil,
         likes: { count: 7 },
         link: 'www.instawoop.com/978aadghhedfg9hadg9/',
@@ -88,6 +96,8 @@ describe Entry do
       @legit_entry = 'www.instawoop.com/978adfg9hadg9/'
       @false_entry1 = 'www.instawoop.com/978aadghhedfg9hadg9/'
       @false_entry2 = 'www.instawoop.com/978adfg9haasdfdg9/'
+      @legit_entry2 = 'www.instawoop.com/978adadsfgadfg9hadg9/'
+      @association_check = Entry.find_by url: @legit_entry2
     end
 
     it 'should have put the first entry in the database' do
@@ -100,6 +110,10 @@ describe Entry do
 
     it 'should not have put the third entry in the database' do
       expect(Entry.find_by url: @false_entry2).to_not be_true
+    end
+
+    it 'should generate appropriate relationships for preexisting tags' do
+      expect(@association_check.tags.count).to eq 3
     end
   end
 end
