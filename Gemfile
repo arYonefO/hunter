@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'pg'
 gem 'whenever'
 gem 'geocoder'
+gem 'database_cleaner'
 
 group :doc do
   gem 'sdoc', require: false
