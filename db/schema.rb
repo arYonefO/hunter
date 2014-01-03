@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102100655) do
+ActiveRecord::Schema.define(version: 20140103113311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 20140102100655) do
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "chase",      default: false
+    t.boolean  "chase",                     default: false
+    t.integer  "next_max_tag_id", limit: 8
   end
 
   add_index "tags", ["label"], name: "index_tags_on_label", unique: true, using: :btree

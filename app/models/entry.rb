@@ -65,7 +65,7 @@ class Entry < ActiveRecord::Base
   def self.put_response_into_database(response)
     response.each do |entry|
       entry[:tags].map! do |tag|
-        Tag.new(label: tag)
+        Tag.where(:label => tag).first_or_create
       end
       record = Entry.new(entry)
       record.save
@@ -82,7 +82,25 @@ class Entry < ActiveRecord::Base
       newest_page_response = Instagram.user_recent_media(user_id, :max_id => next_page_max_id )
       Entry.ingest(newest_page_response)
       p "This is the max id: #{next_page_max_id = newest_page_response.pagination.next_max_id}"
-      p 'another page'
+      p 'another page done'
+    end
+  end
+
+  def self.hoover_ingest(instagram_response, query_tag)
+    Entry.ingest(instagram_response)
+    query_tag.update_attribute(:next_max_tag_id, instagram_response.pagination.next_max_tag_id)
+  end
+
+  def self.hoover_tag(tag)
+    query_tag = Tag.where(:label => tag).first_or_create
+    if query_tag.next_max_tag_id.nil?
+      hoover_ingest(Instagram.tag_recent_media(tag), query_tag)
+    end
+    30.times do |n|
+      next_id = query_tag.next_max_tag_id
+      p "This is the max id: #{next_id}"
+      hoover_ingest(Instagram.tag_recent_media(tag, :max_id => next_id), query_tag)
+      p 'another page done'
     end
   end
 end

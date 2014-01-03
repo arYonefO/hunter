@@ -8,6 +8,8 @@ describe Tag do
   it { should respond_to(:label) }
   it { should respond_to(:entries) }
   it { should respond_to(:chase) }
+  it { should respond_to(:next_max_tag_id) }
+
 
   it { should validate_presence_of(:label) }
   it { should validate_uniqueness_of(:label) }
