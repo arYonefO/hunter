@@ -55,7 +55,7 @@ describe Entry do
 
 
 
-  describe 'api responses should be appropriately ingested' do
+  describe '.ingest' do
     API_RESPONSE =
     [
       {
@@ -101,8 +101,5 @@ describe Entry do
     it 'should not have put the third entry in the database' do
       expect(Entry.find_by url: @false_entry2).to_not be_true
     end
-
-    # Consider looking up the possible records in the DB?
-
   end
 end
