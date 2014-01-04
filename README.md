@@ -10,7 +10,8 @@ Conditions:
 -Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 Priority:
--Consider implementing a paginating capture of the tag/recent/media
+-Get the most basic of D3 maps running
+-Research and read up on D3
 -Mockup for the display
 
 Done:
@@ -22,3 +23,4 @@ Done:
 -See if Geocoder can determine the promixity of DB entries to one another
 -IF GEOCODE WORKS: Add promixity to the Entry table
 -Figure out what can be tested next
+-Consider implementing a paginating capture of the tag/recent/media

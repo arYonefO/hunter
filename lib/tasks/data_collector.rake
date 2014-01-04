@@ -11,7 +11,7 @@ namespace :db do
 
   desc "hoover the selected user"
   task hoover_user: :environment do
-    Entry.clean_them_out('gabriels_twin')
+    Entry.clean_them_out('nemans')
   end
 
   desc "hoover the selected tag"
