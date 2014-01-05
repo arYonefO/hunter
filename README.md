@@ -16,8 +16,6 @@ By Wednesday:
 
 -Research and read up on D3
 -Mockup for the display
--Get the prox rake task back up from the git history...I will need it to sort out
--See if I can do my proxing via :yandex (check Geocoder gem)
 -Look at Google maps API to better understand it
 
 
@@ -34,6 +32,8 @@ Done:
 -Get the most basic of D3 maps running
 -Look at Google Map API to see if I can get the zooming range to expand (DEFACTO fixed because I changed the map type to ROADMAP)
 Weed out scores with a low prox score, to avoid displaying shitty data or distracting real data (Currently set to five).
+-Get the prox rake task back up from the git history...I will need it to sort out
+-See if I can do my proxing via :yandex (check Geocoder gem)
 
 Ideas:
 -

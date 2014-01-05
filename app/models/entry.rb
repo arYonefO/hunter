@@ -105,6 +105,6 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch
-    Entry.where("prox >= ?", 5)
+    Entry.where("prox >= ?", 5).to_json
   end
 end

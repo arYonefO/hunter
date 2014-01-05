@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   end
 
   def feed
-    render json: Entry.prepare_for_launch.to_json
+    render json: Entry.prepare_for_launch
   end
 
 end
