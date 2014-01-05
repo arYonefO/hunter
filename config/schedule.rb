@@ -22,6 +22,6 @@ every 57.minutes do
   runner "Entry.hoover_tag('melbournegraffiti')", :environment => 'development'
 end
 
-every 101.minutes do
+every 2.hours do
   runner "Entry.hoover_tag('rsa_graffiti')", :environment => 'development'
 end

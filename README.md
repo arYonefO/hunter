@@ -10,14 +10,16 @@ Conditions:
 -Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 Priority:
--Research and read up on D3
--Mockup for the display
 By Wednesday:
 -Get a copy running on Heroku with all the records collected to date.
 -IE, Learn how to grab a postgres data_dump and upload it to Heroku
+
+-Research and read up on D3
+-Mockup for the display
 -Get the prox rake task back up from the git history...I will need it to sort out
--Look at Google Map API to see if I can get the zooming range to expand
 -See if I can do my proxing via :yandex (check Geocoder gem)
+-Look at Google maps API to better understand it
+
 
 Done:
 -Add spork and factorygirl to facilitate testing
@@ -30,6 +32,8 @@ Done:
 -Figure out what can be tested next
 -Consider implementing a paginating capture of the tag/recent/media
 -Get the most basic of D3 maps running
+-Look at Google Map API to see if I can get the zooming range to expand (DEFACTO fixed because I changed the map type to ROADMAP)
+Weed out scores with a low prox score, to avoid displaying shitty data or distracting real data (Currently set to five).
 
 Ideas:
--Weed out scores with a low prox score, to avoid displaying shitty data or distracting real data.
+-

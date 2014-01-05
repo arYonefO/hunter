@@ -104,7 +104,7 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def prepare_for_launch
+  def self.prepare_for_launch
     Entry.where("prox >= ?", 5)
   end
 end
