@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.0.2'
 gem 'instagram'
@@ -15,7 +16,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'pg'
 gem 'whenever'
 gem 'geocoder'
-gem 'database_cleaner'
 
 group :doc do
   gem 'sdoc', require: false
@@ -32,6 +32,7 @@ group :development, :test do
   gem 'childprocess', '0.3.9'
   gem 'debugger'
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 group :test do
