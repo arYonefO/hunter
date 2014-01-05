@@ -1,0 +1,38 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+th {
+  text-align: left;
+}
+
+html, body, #map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.graffiti, .graffiti svg {
+  position: absolute;
+}
+
+.graffiti svg {
+  /*border: 1px solid black;*/
+  width: 20px;
+  height: 20px;
+  font: 10px sans-serif;
+
+  /* images were disappearing at certain zoom level */
+  /* fixed: http://stackoverflow.com/a/12215835 */
+  transform: translateZ(0px);
+  -webkit-transform: translateZ(0px);
+  -moz-transform: translateZ(0px);
+}
+
+.graffiti circle {
+  stroke-width: 1.5px;
+}

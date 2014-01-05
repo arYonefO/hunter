@@ -47,7 +47,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.reformat_datashape(instagram_response)
-    instagram_response.reject!{|entry| entry[:location].nil?}
+    instagram_response.reject!{ |entry| entry[:location].nil? }
     instagram_response.map! do |entry|
       entry_creation_args = {}
       entry_creation_args[:latitude]        = entry[:location][:latitude]
@@ -102,5 +102,9 @@ class Entry < ActiveRecord::Base
       hoover_ingest(Instagram.tag_recent_media(tag, :max_id => next_id), query_tag)
       p 'another page done'
     end
+  end
+
+  def self.prepare_for_launch
+    Entry.where("prox >= ?", 5).to_json
   end
 end

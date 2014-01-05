@@ -17,3 +17,11 @@ end
 every 47.minutes do
   runner "Entry.chase_tag('melbournegraffiti')", :environment => 'development'
 end
+
+every 57.minutes do
+  runner "Entry.hoover_tag('melbournegraffiti')", :environment => 'development'
+end
+
+every 2.hours do
+  runner "Entry.hoover_tag('rsa_graffiti')", :environment => 'development'
+end

@@ -14,8 +14,13 @@ namespace :db do
     Entry.clean_them_out('gabriels_twin')
   end
 
+  desc "Update the proximity of entries"
+  task prox: :environment do
+    Entry.prox_the_entries
+  end
+
   desc "hoover the selected tag"
   task hoover_tag: :environment do
-    Entry.hoover_tag('rsa_graffiti')
+    Entry.hoover_tag('melbournegraffiti')
   end
 end
