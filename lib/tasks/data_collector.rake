@@ -11,7 +11,7 @@ namespace :db do
 
   desc "hoover the selected user"
   task hoover_user: :environment do
-    Entry.clean_them_out('gabriels_twin')
+    Entry.clean_them_out('ivo_sp')
   end
 
   desc "Update the proximity of entries"
@@ -21,6 +21,6 @@ namespace :db do
 
   desc "hoover the selected tag"
   task hoover_tag: :environment do
-    Entry.hoover_tag('melbournegraffiti')
+    Entry.hoover_tag('streetart_champagne')
   end
 end

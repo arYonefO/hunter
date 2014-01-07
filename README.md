@@ -10,13 +10,10 @@ Conditions:
 -Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 Priority:
-By Wednesday:
--Get a copy running on Heroku with all the records collected to date.
--IE, Learn how to grab a postgres data_dump and upload it to Heroku
-
 -Research and read up on D3
 -Mockup for the display
 -Look at Google maps API to better understand it
+-Add lookup search field for the google map
 
 
 Done:
@@ -34,6 +31,9 @@ Done:
 Weed out scores with a low prox score, to avoid displaying shitty data or distracting real data (Currently set to five).
 -Get the prox rake task back up from the git history...I will need it to sort out
 -See if I can do my proxing via :yandex (check Geocoder gem)
+-Get a copy running on Heroku with all the records collected to date.
+-IE, Learn how to grab a postgres data_dump and upload it to Heroku
 
-Ideas:
--
+Issues:
+-Takes very long time to load dots onto map...
+-hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
