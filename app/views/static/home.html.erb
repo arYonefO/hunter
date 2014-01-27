@@ -18,7 +18,7 @@ var J = (function(){
   var _long = function(j) { return j.longitude; };
   // var _likes = function(j) { return j.likes; };
   // var _created = function(j) { return j.posted_at; };
-  // var _thumbnail = function(j) { return j.thumbnail; };
+  var _thumbnail = function(j) { return j.thumbnail_url; };
 
   // public interface
   var f = {};
@@ -28,7 +28,7 @@ var J = (function(){
   f.long      = _long;
   // f.likes     = _likes;
   // f.created   = _created;
-  // f.thumbnail = _thumbnail;
+  f.thumbnail = _thumbnail;
 
   return f;
 }());
@@ -78,11 +78,6 @@ d3.json("http://localhost:3000/feed", function(data) {
           .attr('fill', 'red')
           .attr('stroke', 'black')
           .attr('stroke-width', '1%')
-// attempted symbol code for markers
-
-// Required for any symbology
-          .attr("cx", padding)
-          .attr("cy", padding);
 
       // Add a label.
       // marker.append("svg:text")
@@ -120,22 +115,22 @@ d3.json("http://localhost:3000/feed", function(data) {
 
       // show labels if zoom is greater than 10 (ie. street level)
       console.log(map.zoom);
-      if (map.zoom >= 10) {
+      if (map.zoom >= 18) {
           layer.selectAll("svg")
             .style('width', map.zoom * 15)
             .style('height', map.zoom * 15)
 
-          layer.selectAll("svg").selectAll("text")
-            .style('padding-right', '100px')
-            .style("opacity", 1);
+          // layer.selectAll("svg").selectAll("text")
+          //   .style('padding-right', '100px')
+          //   .style("opacity", 1);
 
           layer.selectAll("svg").selectAll("image")
             .style("opacity", 1)
             .transition()
             .duration(500)
             .ease('bounce', 0.1)
-            .attr('width', map.zoom * 15)
-            .attr('height', map.zoom * 15);
+            .attr('width', 300)
+            .attr('height', 300);
 
       } else {
 

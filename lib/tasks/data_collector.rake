@@ -21,6 +21,6 @@ namespace :db do
 
   desc "hoover the selected tag"
   task hoover_tag: :environment do
-    Entry.hoover_tag('streetart_champagne')
+    Entry.hoover_tag('moscowstreetart')
   end
 end
