@@ -19,9 +19,17 @@ every 47.minutes do
 end
 
 every 57.minutes do
-  runner "Entry.hoover_tag('melbournegraffiti')", :environment => 'development'
+  # runner "Entry.hoover_tag('arteurbano')", :environment => 'development'
 end
 
 every 2.hours do
-  runner "Entry.hoover_tag('rsa_graffiti')", :environment => 'development'
+  # runner "Entry.hoover_tag('precious_graffiti')", :environment => 'development'
+end
+
+every 3.hours do
+  # runner "Entry.hoover_tag('graffitieverywhere')", :environment => 'development'
+end
+
+every 5.hours do
+  # runner "Entry.hoover_tag('portlandstreetart')", :environment => 'development'
 end
