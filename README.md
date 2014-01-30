@@ -15,6 +15,9 @@ Priority:
 -Look at Google maps API to better understand it
 -Add lookup search field for the google map
 
+Things to get back to:
+-Adding a d3 scale to the marker colouring
+
 
 Done:
 -Add spork and factorygirl to facilitate testing
