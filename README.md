@@ -17,6 +17,7 @@ Priority:
 
 Things to get back to:
 -Adding a d3 scale to the marker colouring
+-Caching the page and the primary database response, so the page isn't waiting so long for those
 
 
 Done:
