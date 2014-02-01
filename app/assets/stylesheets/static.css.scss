@@ -1,20 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   background-color: #bdc3c7;
   color: #9b59b6
 }
 
 #container {
-  margin: 20px auto;
+  margin: 20px;
   width: 90%;
-  padding: 0px 20px 20px 20px;
+  padding: 0px 20px 0px 0px;
 }
 
 th {
   text-align: left;
 }
 
-html, body, #map {
-  width: 90%;
+#map {
+  width: 85%;
   height: 600px;
   margin: 0;
   padding: 0;
@@ -34,15 +43,9 @@ html, body, #map {
   height: 20px;
   font: 10px sans-serif;
 
-  /* images were disappearing at certain zoom level */
-  /* fixed: http://stackoverflow.com/a/12215835 */
   transform: translateZ(0px);
   -webkit-transform: translateZ(0px);
   -moz-transform: translateZ(0px);
-}
-
-.graffiti circle {
-  stroke-width: 1.5px;
 }
 
 /* landing page */
@@ -50,8 +53,9 @@ html, body, #map {
 .landing-graphics {
   background-color: #f2c2c9;
   width: 100%;
+  clear: both;
   text-align: center;
-  height: 350px;
+  height: 400px;
   padding: 5px;
   margin: 10px;
 }
@@ -67,18 +71,18 @@ html, body, #map {
 }
 
 .graff-pic {
-  background-color: blue;
+  background-color: #edede1;
   float: left;
-  width: 250px;
+  width: 40%;
   height: 250px;
   padding: 5px;
-  margin: 5px;
+  margin: 0px;
 }
 
 .arrow {
-  background-color: purple;
+  background-color: #dfdfd7;
   float: left;
-  width: 90px;
+  width: 20%;
   height: 140px;
   margin: 5px;
   padding: 5px;
