@@ -70,13 +70,17 @@ th {
   margin: 5px 0px 5px 0px;
 }
 
-.graff-pic {
+.graff-holder {
   background-color: #edede1;
   float: left;
-  width: 40%;
+  width: auto;
   height: 250px;
   padding: 5px;
   margin: 0px;
+}
+
+.graff-holder img{
+  width: 300px;
 }
 
 .arrow {
