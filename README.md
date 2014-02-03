@@ -16,7 +16,12 @@ Priority:
 -Add lookup search field for the google map
 
 Things to get back to:
+-randomise pretty line, for both instances
+-scale colour over pretty line
 -Adding a d3 scale to the marker colouring
+-Rescale the pretty lines according to page width (sorting out an event listener for window resize)
+-Sort out title
+
 -Caching the page and the primary database response, so the page isn't waiting so long for those
 
 

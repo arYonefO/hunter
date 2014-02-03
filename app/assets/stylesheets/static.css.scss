@@ -29,8 +29,6 @@ th {
   padding: 0;
 }
 
-
-
 /* graffiti yay */
 
 .graffiti, .graffiti svg {
@@ -51,7 +49,7 @@ th {
 /* landing page */
 
 .landing-graphics {
-  background-color: #f2c2c9;
+  /*background-color: #f2c2c9;*/
   min-width: 300px;
   display: flex;
   justify-content: center;
@@ -62,10 +60,9 @@ th {
 }
 
 .pretty-line {
-  background-color: black;
-  position: relative;
+  /*background-color: black;*/
   width: 100%;
-  height: 70 px;
+  height: 50 px;
   padding: 20px;
   margin: 15px 0px 15px 0px;
 }
