@@ -22,5 +22,5 @@ $(document).ready(function(){
                 .attr('height', function(d){
                     return d*5;
                 })
-                .attr("fill", "red");
+                .attr("fill", "teal");
           })();

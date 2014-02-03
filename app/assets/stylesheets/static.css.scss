@@ -7,9 +7,19 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "doublePica";
+  src: url(http://www.google.com/fonts#UsePlace:use/Collection:IM+Fell+Double+Pica)
+  format("truetype");
+}
+
+h1 {
+  font-family: "doublePica", sans-serif
+}
+
 html {
   background-color: #bdc3c7;
-  color: #9b59b6
+  color: #9b59b6;
 }
 
 #container {
