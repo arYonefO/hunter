@@ -1,19 +1,48 @@
-#container {
-  margin: 20px auto;
-  width: 90%;
-  padding: 0px 20px 20px 20px;
+@-ms-viewport {
+  width: device-width;
 }
 
-th {
-  text-align: left;
-}
-
-html, body, #map {
-  width: 90%;
-  height: 600px;
+* {
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "doublePica";
+  src: url(http://www.google.com/fonts#UsePlace:use/Collection:IM+Fell+Double+Pica)
+  format("truetype");
+}
+
+h1 {
+  font-family: "doublePica", sans-serif
+}
+
+html {
+  background-color: #bdc3c7;
+  color: #9b59b6;
+}
+
+#container {
+  margin: 20px;
+  width: 90%;
+  padding: 0px 20px 0px 0px;
+}
+
+#map {
+  width: 85%;
+  height: 600px;
+  margin: 0px auto;
+  padding: 5px;
+  color: #0e0e0e;
+  border: 10px;
+  border-style: solid;
+}
+
+/* graffiti yay */
 
 .graffiti, .graffiti svg {
   position: absolute;
@@ -25,13 +54,70 @@ html, body, #map {
   height: 20px;
   font: 10px sans-serif;
 
-  /* images were disappearing at certain zoom level */
-  /* fixed: http://stackoverflow.com/a/12215835 */
   transform: translateZ(0px);
   -webkit-transform: translateZ(0px);
   -moz-transform: translateZ(0px);
 }
 
-.graffiti circle {
-  stroke-width: 1.5px;
+/* landing page */
+
+.landing-graphics {
+  /*background-color: #f2c2c9;*/
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 5px;
+  margin: auto;
+}
+
+.pretty-line {
+  /*background-color: black;*/
+  width: 100%;
+  height: 50 px;
+  padding: 20px;
+  margin: 15px 0px 15px 0px;
+}
+
+.graff-holder {
+  background-color: #edede1;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  margin: 10px 0;
+  overflow: hidden;
+  border: 3px;
+  border-color: #0f0f02;
+  border-style: solid;
+}
+
+.graff-holder img{
+  width: 300px;
+}
+
+.arrow {
+  background-color: #dfdfd7;
+  float: left;
+  width: 100px;
+  height: 200px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+#title {
+  margin: 10px auto;
+  text-align: center;
+  padding: 10px;
+}
+
+/*media queries */
+
+@media screen and (max-width: 400px) {
+/**/
+
+  #map{
+    width: 100%;
+  }
 }

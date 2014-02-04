@@ -11,9 +11,22 @@ Conditions:
 
 Priority:
 
--Mockup for the display
+
+
+
+Things to get back to:
+-randomise pretty line, for both instances
+-scale colour over pretty line
+-Adding a d3 scale to the marker colouring
+-Rescale the pretty lines according to page width (sorting out an event listener for window resize)
+-Sort out title with d3 (MAINTAIN!)
 -Look at Google maps API to better understand it
 -Add lookup search field for the google map
+-Sort out proper colour scheme
+-build down arrow (Check out SIMBOL?)
+-Make the images flexible
+-Caching the page and the primary database response, so the page isn't waiting so long for those
+-Make images clickable, with link to their instagram URL
 
 
 Done:
@@ -34,6 +47,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
 -Get a copy running on Heroku with all the records collected to date.
 -IE, Learn how to grab a postgres data_dump and upload it to Heroku
 -Research and read up on D3
+-Mockup for the display
 
 Issues:
 -Takes very long time to load dots onto map...
