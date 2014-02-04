@@ -17,6 +17,10 @@ gem 'whenever'
 gem 'geocoder'
 gem 'database_cleaner'
 
+# caching funsies
+gem 'memcachier'
+gem 'dalli'
+
 group :doc do
   gem 'sdoc', require: false
 end

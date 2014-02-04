@@ -105,6 +105,8 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch
-    Entry.where("prox >= ?", 200).to_json
+    Rails.cache.fetch("high_prox_entries", :expires_in => 11.hours) do
+      Entry.where("prox >= ?", 200).to_json
+    end
   end
 end
