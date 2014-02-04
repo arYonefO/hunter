@@ -23,7 +23,8 @@ Things to get back to:
 -Look at Google maps API to better understand it
 -Add lookup search field for the google map
 -Sort out proper colour scheme
--build down arrow
+-build down arrow (Check out SIMBOL?)
+-Make the images flexible
 -Caching the page and the primary database response, so the page isn't waiting so long for those
 -Make images clickable, with link to their instagram URL
 
