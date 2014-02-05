@@ -114,9 +114,10 @@ class Entry < ActiveRecord::Base
     images = []
     until images.count == 2 do
       find_image = rand(60000)
-      if Entry.find_by(id: find_image)
-        url = Entry.find_by(id: find_image).url
-        full_image_url = Entry.find_by(id: find_image).full_image_url
+      record = Entry.find_by(id: find_image)
+      if record
+        url = record.url
+        full_image_url = record.full_image_url
         images << [ full_image_url, url ]
       end
     end

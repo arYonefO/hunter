@@ -25,7 +25,6 @@ Things to get back to:
 -Sort out proper colour scheme
 -build down arrow (Check out SIMBOL?)
 -Make the images flexible
--Make images clickable, with link to their instagram URL
 
 
 Done:
@@ -48,6 +47,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
 -Research and read up on D3
 -Mockup for the display
 -Caching the page and the primary database response, so the page isn't waiting so long for those
+-Make images clickable, with link to their instagram URL
 
 Issues:
 -Takes very long time to run RSPEC...

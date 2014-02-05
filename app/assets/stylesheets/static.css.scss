@@ -102,13 +102,14 @@ html {
 }
 
 .arrow {
-  background-color: #dfdfd7;
-  float: left;
-  width: 100px;
-  height: 200px;
+  width: 180px;
+  height: 280px;
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
   overflow: hidden;
+  text-align: center;
+  font-size: 16em;
+  font-weight: 800;
 }
 
 #title {
