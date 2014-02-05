@@ -1,13 +1,7 @@
 class StaticController < ApplicationController
 
   def home
-    @images = []
-    until @images.count == 2 do
-      find_image = rand(60000)
-      if Entry.find_by(id: find_image)
-        @images << Entry.find_by(id: find_image).full_image_url
-      end
-    end
+    @images = Entry.two_random_images
   end
 
   def feed

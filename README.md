@@ -19,14 +19,12 @@ Things to get back to:
 -scale colour over pretty line
 -Adding a d3 scale to the marker colouring
 -Rescale the pretty lines according to page width (sorting out an event listener for window resize)
--Sort out title with d3 (MAINTAIN!)
+-Build title with d3 (MAINTAIN!)
 -Look at Google maps API to better understand it
 -Add lookup search field for the google map
 -Sort out proper colour scheme
 -build down arrow (Check out SIMBOL?)
 -Make the images flexible
--Caching the page and the primary database response, so the page isn't waiting so long for those
--Make images clickable, with link to their instagram URL
 
 
 Done:
@@ -48,7 +46,11 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
 -IE, Learn how to grab a postgres data_dump and upload it to Heroku
 -Research and read up on D3
 -Mockup for the display
+-Caching the page and the primary database response, so the page isn't waiting so long for those
+-Make images clickable, with link to their instagram URL
 
 Issues:
--Takes very long time to load dots onto map...
+-Takes very long time to run RSPEC...
+-It takes a super long time to load that first rails hit on the DB. Not sure if current caching setup will always avoid that happening to an end-user
 -hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
+-CSS styling has thrown off X and Y for the map (Not actually the case, just the display of)

@@ -108,39 +108,39 @@ $(document).ready(function(){
         // }
 
         // show labels if zoom is greater than 10 (ie. street level)
-        console.log(map.zoom);
-        if (map.zoom >= 18) {
-            layer.selectAll("svg")
-              .style('width', map.zoom * 15)
-              .style('height', map.zoom * 15)
+        // console.log(map.zoom);
+        // if (map.zoom >= 18) {
+        //     layer.selectAll("svg")
+        //       .style('width', map.zoom * 15)
+        //       .style('height', map.zoom * 15)
 
-            // layer.selectAll("svg").selectAll("text")
-            //   .style('padding-right', '100px')
-            //   .style("opacity", 1);
+        //     // layer.selectAll("svg").selectAll("text")
+        //     //   .style('padding-right', '100px')
+        //     //   .style("opacity", 1);
 
-            layer.selectAll("svg").selectAll("image")
-              .style("opacity", 1)
-              .transition()
-              .duration(500)
-              .ease('bounce', 0.1)
-              .attr('width', 300)
-              .attr('height', 300);
+        //     layer.selectAll("svg").selectAll("image")
+        //       .style("opacity", 1)
+        //       .transition()
+        //       .duration(500)
+        //       .ease('bounce', 0.1)
+        //       .attr('width', 300)
+        //       .attr('height', 300);
 
-        } else {
+        // } else {
 
-            layer.selectAll("svg")
-              .style('width', "20px")
-              .style('height', "20px");
+        //     layer.selectAll("svg")
+        //       .style('width', "20px")
+        //       .style('height', "20px");
 
-            layer.selectAll("svg").selectAll("text")
-              .style("opacity", 0);
+        //     layer.selectAll("svg").selectAll("text")
+        //       .style("opacity", 0);
 
-            layer.selectAll("svg").selectAll("image")
-              .style("opacity", 0);
-        }
+        //     layer.selectAll("svg").selectAll("image")
+        //       .style("opacity", 0);
+        // }
 
-        layer.selectAll("svg").selectAll("image")
-          .on("click", function(d,i) { window.open(J.link(d));});
+        // layer.selectAll("svg").selectAll("image")
+        //   .on("click", function(d,i) { window.open(J.link(d));});
       };
     };
 

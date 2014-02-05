@@ -4,13 +4,15 @@
 
   <div class="landing-graphics">
     <div class="graff-holder">
-      <%= image_tag(@images[0], alt: "Yo mumma", class: 'graff') %>
+      <%= link_to image_tag(@images[0][0], alt: "Yo mumma", class: 'graff'), @images[0][1] %>
     </div>
-    <div class="arrow"></div>
-    <div class="graff-holder"><%= image_tag(@images[1], alt: "Yo mumma", class: 'graff') %>
+    <div class="arrow">&#x21AF</div>
+    <div class="graff-holder"><%= link_to image_tag(@images[1][0], alt: "Yo mumma", class: 'graff'), @images[1][1] %>
     </div>
   </div>
 
 <div class="pretty-line"></div>
 
-<div id="map"></div>
+<div class="faux-border">
+  <div id="map"></div>
+</div>

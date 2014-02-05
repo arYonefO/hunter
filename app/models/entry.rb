@@ -105,6 +105,23 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch
-    Entry.where("prox >= ?", 200).to_json
+    Rails.cache.fetch("regular_prox_entries", :expires_in => 11.hours) do
+      Entry.where("prox >= ?", 10).to_json
+    end
   end
+
+   def self.two_random_images
+    images = []
+    until images.count == 2 do
+      find_image = rand(60000)
+      record = Entry.find_by(id: find_image)
+      if record
+        url = record.url
+        full_image_url = record.full_image_url
+        images << [ full_image_url, url ]
+      end
+    end
+    images
+  end
+
 end
