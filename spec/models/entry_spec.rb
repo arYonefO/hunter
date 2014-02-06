@@ -115,8 +115,5 @@ describe Entry do
     it 'should generate appropriate relationships for preexisting tags' do
       expect(@association_check.tags.count).to eq 3
     end
-
-    describe do
-    end
   end
 end
