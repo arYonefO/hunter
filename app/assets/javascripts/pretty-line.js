@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var dataset = [1,2,3,4,3,5,7,6,8,9,6,3,5,7,8,7,5,3,2,3,2,1,3,4,7,5,6,4,3,2,1,2,1]
+    var dataset = [1,2,3,4,3,5,7,6,8,9,6,3,5,7,8,7.1,5.4,3,2,3.4,2,1.3,3,4.6,7,5.3,6,4.4,3,2,1.1,2.2,1]
     var barPadding = 2
     var w = (window.innerWidth - 30) // IE 6 and below can go away
     var h = 70
@@ -22,5 +22,10 @@ $(document).ready(function(){
                 .attr('height', function(d){
                     return d*5 + 2;
                 })
-                .attr("fill", "teal");
+                .attr('fill', function(d){
+                    var colour = d3.scale.linear()
+                         .domain([0, 8])
+                         .range(["#9b59b6", "#1abc9c"]);
+                        return colour(d+2);
+                })
           })();

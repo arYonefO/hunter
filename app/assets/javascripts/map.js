@@ -9,7 +9,7 @@ $(document).ready(function(){
     var _link = function(j) { return j.url; };
     var _lat = function(j) { return j.latitude; };
     var _lon = function(j) { return j.longitude; };
-    // var _prox = function(j) { return j.prox; };
+    var _prox = function(j) { return j.prox; };
     // var _created = function(j) { return j.posted_at; };
     var _thumbnail = function(j) { return j.thumbnail_url; };
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
     f.link      = _link;
     f.lat       = _lat;
     f.lon      = _lon;
-    // f.prox     = _prox;
+    f.prox     = _prox;
     // f.created   = _created;
     f.thumbnail = _thumbnail;
 
@@ -48,38 +48,14 @@ $(document).ready(function(){
           .attr("class", "marker");
 
         marker.append("svg:rect")
-            // .attr("r", function(d) {
-            //    var size = d3.scale.linear()
-            //     .domain([0, 200])
-            //     .range([3, 10]);
-            //     return size(J.likes(d));
-            // })
-            // .attr('fill', function(d){
-            //    var color = d3.scale.linear()
-            //     .domain([0, 200])
-            //     .range(["red", "white"]);
-            //     return color(J.likes(d));
-            // })
-  // rectangle for markers
               .attr("height", 3)
               .attr("width", 3)
-              .attr("fill", function(d){
-                  return "rgb(" + (d.prox-100) + ", 0, 0)";
-              });
-
-  // circle for markers
-            // .attr("r", 4)
-            // .attr('fill', 'red')
-            // .attr('stroke', 'black')
-            // .attr('stroke-width', '1%')
-
-        // Add a label.
-        // marker.append("svg:text")
-        //     .attr("x", padding + 7)
-        //     .attr("y", padding)
-        //     .attr("dy", ".34em")
-        //     .text(function(d) { return d.key; })
-        //     .style("opacity", 0);
+              .attr('fill', function(d){
+                 var colour = d3.scale.linear()
+                  .domain([0, 100])
+                  .range(["black", "red"]);
+                  return colour(J.prox(d)/6 + 20);
+              })
 
         // marker.append("svg:image")
         //     .each(transformImage)
@@ -91,7 +67,6 @@ $(document).ready(function(){
         //     .style("top", "100px");
 
         function transformMarker(d) {
-          // debugger
           d = new google.maps.LatLng(J.lat(d), J.lon(d));
           d = projection.fromLatLngToDivPixel(d);
           return d3.select(this)
@@ -106,17 +81,6 @@ $(document).ready(function(){
         //       .attr("x", 15)
         //       .attr("y", 15);
         // }
-
-        // show labels if zoom is greater than 10 (ie. street level)
-        // console.log(map.zoom);
-        // if (map.zoom >= 18) {
-        //     layer.selectAll("svg")
-        //       .style('width', map.zoom * 15)
-        //       .style('height', map.zoom * 15)
-
-        //     // layer.selectAll("svg").selectAll("text")
-        //     //   .style('padding-right', '100px')
-        //     //   .style("opacity", 1);
 
         //     layer.selectAll("svg").selectAll("image")
         //       .style("opacity", 1)
@@ -143,17 +107,7 @@ $(document).ready(function(){
         //   .on("click", function(d,i) { window.open(J.link(d));});
       };
     };
-
-
-    // Bind our overlay to the map…
     overlay.setMap(map);
-
-    // we can change map settings after we look at the data as well
-    //
-    // var new_center = new google.maps.LatLng(34.0838455, -118.3586526);
-    // map.center = new_center;
-    // map.zoom = 12;
-    // overlay.setMap(map);
   });
 
 })

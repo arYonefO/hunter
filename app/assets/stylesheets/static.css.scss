@@ -19,6 +19,7 @@
 
 h1 {
   font-family: "doublePica", sans-serif;
+  text-shadow: 2px 1px #000000;
 }
 
 html {
@@ -112,7 +113,8 @@ img {
   padding: 10px;
   overflow: hidden;
   text-align: center;
-  font-size: 18em;
+  font-size: 20em;
+  line-height: 0.9;
   font-weight: 800;
   font-family: "doublePica", sans-serif
 }
