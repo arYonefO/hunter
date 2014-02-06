@@ -31,14 +31,14 @@ describe Entry do
     it { should_not be_valid }
   end
 
-  describe "location" do
+  describe ".location" do
     it "should return the correct format of coordinates" do
       this_entry = Entry.new(longitude: 34.4454, latitude: 53.2352)
       expect(this_entry.location).to eq [this_entry.latitude, this_entry.longitude]
     end
   end
 
-  describe "proximity count" do
+  describe ".proximity count" do
 
     describe "should return zero if there are no nearby entries" do
       its(:prox) { should eq 0 }
@@ -114,6 +114,9 @@ describe Entry do
 
     it 'should generate appropriate relationships for preexisting tags' do
       expect(@association_check.tags.count).to eq 3
+    end
+
+    describe do
     end
   end
 end

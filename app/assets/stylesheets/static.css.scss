@@ -18,12 +18,16 @@
 }
 
 h1 {
-  font-family: "doublePica", sans-serif
+  font-family: "doublePica", sans-serif;
 }
 
 html {
   background-color: #bdc3c7;
   color: #9b59b6;
+}
+
+img {
+  max-width: 100%;
 }
 
 #container {
@@ -87,7 +91,7 @@ html {
 
 .graff-holder {
   background-color: #edede1;
-  width: auto;
+  max-width: 420px;
   height: auto;
   padding: 5px;
   margin: 10px 0;
@@ -98,24 +102,26 @@ html {
 }
 
 .graff-holder img{
-  width: 300px;
+  min-width: 300px;
 }
 
 .arrow {
-  width: 180px;
-  height: 280px;
+  width: 240px;
+  height: auto;
   margin: 10px;
   padding: 10px;
   overflow: hidden;
   text-align: center;
-  font-size: 16em;
+  font-size: 18em;
   font-weight: 800;
+  font-family: "doublePica", sans-serif
 }
 
 #title {
   margin: 10px auto;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
+  font-size: 3em;
 }
 
 /*media queries */
