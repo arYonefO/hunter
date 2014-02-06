@@ -10,21 +10,18 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Make the images flexible
+ - Make the images flexible?
  - Deploy next version of app
 
 
 
 ### Things to get back to:
  - randomise pretty line, for both instances
- - scale colour over pretty line
- - Adding a d3 scale to the marker colouring
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
  - Build title with d3 (MAINTAIN!)
  - Look at Google maps API to better understand it
  - Add lookup search field for the google map
  - Sort out proper colour scheme
- - build down arrow (Check out SIMBOL?)
  - Consider caching the two_random_images
 
 
@@ -49,6 +46,9 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Mockup for the display
  - Caching the page and the primary database response, so the page isn't waiting so long for those
  - Make images clickable, with link to their instagram URL
+ - scale colour over pretty line
+ - Adding a d3 scale to the marker colouring
+ - build down arrow (Check out SIMBOL?)
 
 ### Issues:
  - Takes very long time to run RSPEC...
