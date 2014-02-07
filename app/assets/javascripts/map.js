@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var map = new google.maps.Map(d3.select("#map").node(), {
     zoom: 13,
-    center: new google.maps.LatLng(37.753887, -122.43782),
+    center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
   ////////////////////////////////////////////////////////
