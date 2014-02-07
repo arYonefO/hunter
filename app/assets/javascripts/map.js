@@ -26,7 +26,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://localhost:3000/feed", function(data) {
+  d3.json("http://obscure-hollows-9858.herokuapp.com/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
 

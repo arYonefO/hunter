@@ -33,6 +33,10 @@ img {
   max-width: 100%;
 }
 
+footer {
+  text-align: center;
+}
+
 #container {
   margin: 20px;
   width: 90%;
@@ -62,9 +66,9 @@ img {
 
 .graffiti svg {
   /*border: 1px solid black;*/
-  width: 20px;
+/*  width: 20px;
   height: 20px;
-  font: 10px sans-serif;
+  font: 10px sans-serif;*/
 
   transform: translateZ(0px);
   -webkit-transform: translateZ(0px);
