@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var dataset = [1,2,3,4,3,5,7,6,8,9,6,3,5,7,8,7.1,5.4,3,2,3.4,2,1.3,3,4.6,7,5.3,6,4.4,3,2,1.1,2.2,1]
+    var dataset = [1,2.1,3,4,3,5,7,6,8,9,6,3,5,7,8,7.1,5.4,3,2,3.4,2,1.3,3,4.6,7,5.3,6,4.4,3,2,1.1,2.2,1]
     var barPadding = 2
     var w = (window.innerWidth - 30) // IE 6 and below can go away
     var h = 76

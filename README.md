@@ -11,8 +11,7 @@ To find graffiti/street art hot-spots in cities around the world
 
 ### Priority:
  - Make the images flexible?
- - Deploy next version of app
-
+ - Load data up to AWS and point heroku deploy to it
 
 
 ### Things to get back to:
@@ -49,9 +48,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - scale colour over pretty line
  - Adding a d3 scale to the marker colouring
  - build down arrow (Check out SIMBOL?)
+  - Deploy next version of app (v2)
 
 ### Issues:
- - Takes very long time to run RSPEC...
- - It takes a super long time to load that first rails hit on the DB. Not sure if current caching setup will always avoid that happening to an end - user
+ - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
  - hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
- - CSS styling has thrown off X and Y for the map (Particularly bad at wide zoom levels)

@@ -37,8 +37,7 @@ $(document).ready(function(){
           .attr("class", "graffiti");
 
       overlay.draw = function() {
-        var projection = this.getProjection(),
-            padding = 10;
+        var projection = this.getProjection(), padding = 10;
 
         var marker = layer.selectAll("svg")
           .data(data)
@@ -48,14 +47,15 @@ $(document).ready(function(){
           .attr("class", "marker");
 
         marker.append("svg:rect")
-              .attr("height", 3)
-              .attr("width", 3)
+              .attr("height", 8)
+              .attr("width", 8)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
                   .range(["black", "red"]);
                   return colour(J.prox(d)/6 + 20);
               })
+
 
         // marker.append("svg:image")
         //     .each(transformImage)
@@ -70,8 +70,8 @@ $(document).ready(function(){
           d = new google.maps.LatLng(J.lat(d), J.lon(d));
           d = projection.fromLatLngToDivPixel(d);
           return d3.select(this)
-              .style("left", (d.x - padding) + "px")
-              .style("top", (d.y - padding) + "px");
+              .style("left", (d.x) + "px")
+              .style("top", (d.y) + "px");
         }
 
         // function transformImage(d) {
