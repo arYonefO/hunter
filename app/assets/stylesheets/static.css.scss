@@ -11,6 +11,8 @@
   box-sizing: border-box;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Calligraffitti);
+
 @font-face {
   font-family: "doublePica";
   src: url(http://www.google.com/fonts#UsePlace:use/Collection:IM+Fell+Double+Pica)
@@ -18,13 +20,13 @@
 }
 
 h1 {
-  font-family: "doublePica", sans-serif;
-  text-shadow: 2px 1px #000000;
+  /*font-family: "doublePica", sans-serif;*/
 }
 
 html {
   background-color: #bdc3c7;
-  color: #9b59b6;
+  color: #9c5ab8;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.55);
 }
 
 img {
@@ -125,6 +127,8 @@ img {
   text-align: center;
   padding: 5px;
   font-size: 3em;
+  font-family: 'Calligraffitti', cursive;
+  font-weight: 800;
 }
 
 /*media queries */
