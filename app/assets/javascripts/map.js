@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var map = new google.maps.Map(d3.select("#map").node(), {
     zoom: 13,
-    center: new google.maps.LatLng(37.753887, -122.43782),
+    center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
   ////////////////////////////////////////////////////////
@@ -26,7 +26,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://localhost:3000/feed", function(data) {
+  d3.json("http://obscure-hollows-9858.herokuapp.com/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
 

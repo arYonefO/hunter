@@ -1,18 +1,21 @@
-<header id="title"><h1>LECHE ASADA</h1></header>
+<%= render 'header' %>
 
 <div class="pretty-line"></div>
 
   <div class="landing-graphics">
     <div class="graff-holder">
-      <%= link_to image_tag(@images[0][0], alt: "Yo mumma", class: 'graff'), @images[0][1] %>
+      <%= render :partial => 'graff_image', :locals =>{:index => 0} %>
     </div>
     <div class="arrow">&#x21AF</div>
-    <div class="graff-holder"><%= link_to image_tag(@images[1][0], alt: "Yo mumma", class: 'graff'), @images[1][1] %>
+    <div class="graff-holder">
+      <%= render :partial => 'graff_image', :locals =>{:index => 1} %>
     </div>
   </div>
 
 <div class="pretty-line"></div>
 
-<div class="faux-border">
-  <div id="map"></div>
-</div>
+<%= render 'map' %>
+<%= render 'footer' %>
+
+
+
