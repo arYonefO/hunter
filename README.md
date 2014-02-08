@@ -10,9 +10,8 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Make the images flexible?
  - Load data up to AWS and point heroku deploy to it
-
+ - Add some more mobile friendly stylings
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -49,6 +48,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Adding a d3 scale to the marker colouring
  - build down arrow (Check out SIMBOL?)
   - Deploy next version of app (v2)
+ - Make the images flexible?
+
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
