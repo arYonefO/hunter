@@ -116,7 +116,7 @@ class Entry < ActiveRecord::Base
                   created_at: entry.created_at
                }
       end
-      feed.first(30000)to_json
+      feed.first(30000).to_json
     end
   end
 
