@@ -52,17 +52,9 @@ LecheAsada::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  # config.cache_store = :dalli_store, { :value_max_bytes => 152176259 }
-
-  client = Dalli::Client.new(ENV["MEMCACHIER_SERVERS"],
-                           :username => ENV["MEMCACHIER_USERNAME"],
+  config.cache_store = :dalli_store, { :username => ENV["MEMCACHIER_USERNAME"],
                            :password => ENV["MEMCACHIER_PASSWORD"],
-                           :value_max_bytes => 23485760)
-config.action_dispatch.rack_cache = {
-  :metastore    => client,
-  :entitystore  => client
-}
-config.static_cache_control = "public, max-age=2592000"
+                           :value_max_bytes => 23485760 }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
