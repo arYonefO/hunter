@@ -105,8 +105,12 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch
-    Rails.cache.fetch("regular_prox_entries", :expires_in => 11.hours) do
-      Entry.all.to_json
+    Rails.cache.fetch("regular_prox_entries", :expires_in => 24.hours) do
+      feed = []
+      Entry.find_in_batches(:batch_size => 1000) do |entries|
+        feed + entries.where("prox >= ?", 20)
+      end
+      feed.to_json
     end
   end
 
