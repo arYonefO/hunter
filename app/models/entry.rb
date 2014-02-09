@@ -116,7 +116,7 @@ class Entry < ActiveRecord::Base
                   created_at: entry.created_at
                }
       end
-      p feed.to_json
+      feed.to_json
     end
   end
 
