@@ -24,3 +24,10 @@ namespace :db do
     Entry.hoover_tag('moscowstreetart')
   end
 end
+
+namespace :cache do
+  desc "Load the feed into the cache"
+  task load: :environment do
+    Entry.prepare_for_launch
+  end
+end
