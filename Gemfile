@@ -18,8 +18,7 @@ gem 'geocoder'
 gem 'database_cleaner'
 
 # caching funsies
-gem 'memcachier'
-gem 'dalli'
+gem 'redis'
 
 group :doc do
   gem 'sdoc', require: false

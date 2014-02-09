@@ -105,33 +105,59 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch
-    Rails.cache.fetch("regular_prox_entries", :expires_in => 24.hours) do
-      feed = []
-      Entry.where("prox >= ?", 20).find_each do |entry|
-        feed << {
-                  lat: entry.latitude,
-                  lng: entry.longitude,
-                  prox: entry.prox,
-               }
-      end
-      feed.first(30000).to_json
+    if feed = $redis.get('feed')
+      return feed
+    else
+      new_feed = Entry.generate_feed_JSON
     end
+
+    if new_feed
+      $redis.set('feed', new_feed)
+      expire_time = Time.now.to_i + 24.hours
+      $redis.expireat('feed', expire_time)
+    end
+    new_feed
   end
 
-   def self.two_random_images
-    Rails.cache.fetch("image_pair", :expires_in => 2.minutes) do
-      images = []
-      until images.count == 2 do
-        find_image = rand(66000)
-        record = Entry.find_by(id: find_image)
-        if record
-          url = record.url
-          full_image_url = record.full_image_url
-          images << [ full_image_url, url ]
-        end
-      end
-      images
+  def self.generate_feed_JSON
+    feed = []
+    Entry.where("prox >= ?", 20).find_each do |entry|
+      feed << {
+                lat: entry.latitude,
+                lng: entry.longitude,
+                prox: entry.prox
+              }
     end
+    feed.to_json
+  end
+
+  def generate_landing_images
+    images = []
+    until images.count == 2 do
+      find_image = rand(66000)
+      record = Entry.find_by(id: find_image)
+      if record
+        url = record.url
+        full_image_url = record.full_image_url
+        images << [ full_image_url, url ]
+      end
+    end
+    images
+  end
+
+  def self.two_random_images
+    if images = $redis.get('images')
+      return images
+    else
+      new_images = Entry.generate_landing_images
+    end
+
+    if new_images
+      $redis.set('images', new_images)
+      expire_time = Time.now.to_i + 2.minutes
+      $redis.expireat('images', expire_time)
+    end
+    new_images
   end
 
 end
