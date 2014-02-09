@@ -111,17 +111,19 @@ class Entry < ActiveRecord::Base
   end
 
    def self.two_random_images
-    images = []
-    until images.count == 2 do
-      find_image = rand(60000)
-      record = Entry.find_by(id: find_image)
-      if record
-        url = record.url
-        full_image_url = record.full_image_url
-        images << [ full_image_url, url ]
+    Rails.cache.fetch("image_pair", :expires_in => 2.minutes) do
+      images = []
+      until images.count == 2 do
+        find_image = rand(66000)
+        record = Entry.find_by(id: find_image)
+        if record
+          url = record.url
+          full_image_url = record.full_image_url
+          images << [ full_image_url, url ]
+        end
       end
+      images
     end
-    images
   end
 
 end
