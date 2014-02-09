@@ -6,21 +6,21 @@ $(document).ready(function(){
   });
   ////////////////////////////////////////////////////////
   var J = (function(){
-    var _link = function(j) { return j.url; };
-    var _lat = function(j) { return j.latitude; };
-    var _lon = function(j) { return j.longitude; };
+    // var _link = function(j) { return j.url; };
+    var _lat = function(j) { return j.lat; };
+    var _lon = function(j) { return j.lng; };
     var _prox = function(j) { return j.prox; };
     // var _created = function(j) { return j.posted_at; };
-    var _thumbnail = function(j) { return j.thumbnail_url; };
+    // var _thumbnail = function(j) { return j.thumbnail_url; };
 
     var f = {};
 
-    f.link      = _link;
+    // f.link      = _link;
     f.lat       = _lat;
     f.lon      = _lon;
     f.prox     = _prox;
     // f.created   = _created;
-    f.thumbnail = _thumbnail;
+    // f.thumbnail = _thumbnail;
 
     return f;
   }());

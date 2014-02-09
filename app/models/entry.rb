@@ -108,12 +108,10 @@ class Entry < ActiveRecord::Base
     Rails.cache.fetch("regular_prox_entries", :expires_in => 24.hours) do
       feed = []
       Entry.where("prox >= ?", 20).find_each do |entry|
-        feed << { url: entry.url,
-                  thumbnail_url: entry.thumbnail_url,
-                  latitude: entry.latitude,
-                  longitude: entry.longitude,
+        feed << {
+                  lat: entry.latitude,
+                  lng: entry.longitude,
                   prox: entry.prox,
-                  created_at: entry.created_at
                }
       end
       feed.first(30000).to_json
