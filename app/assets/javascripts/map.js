@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var map = new google.maps.Map(d3.select("#map").node(), {
     zoom: 13,
+    minZoom: 10,
     center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
@@ -57,15 +58,6 @@ $(document).ready(function(){
               })
 
 
-        // marker.append("svg:image")
-        //     .each(transformImage)
-        //     .attr("xlink:href", function(d) {return J.thumbnail(d);})
-        //     .attr("width", 0)
-        //     .attr("height", 0)
-        //     .style("opacity", 1)
-        //     .style("left", "100px")
-        //     .style("top", "100px");
-
         function transformMarker(d) {
           d = new google.maps.LatLng(J.lat(d), J.lon(d));
           d = projection.fromLatLngToDivPixel(d);
@@ -74,37 +66,6 @@ $(document).ready(function(){
               .style("top", (d.y) + "px");
         }
 
-        // function transformImage(d) {
-        //   d = new google.maps.LatLng(J.lat(d), J.lon(d));
-        //   d = projection.fromLatLngToDivPixel(d);
-        //   return d3.select(this)
-        //       .attr("x", 15)
-        //       .attr("y", 15);
-        // }
-
-        //     layer.selectAll("svg").selectAll("image")
-        //       .style("opacity", 1)
-        //       .transition()
-        //       .duration(500)
-        //       .ease('bounce', 0.1)
-        //       .attr('width', 300)
-        //       .attr('height', 300);
-
-        // } else {
-
-        //     layer.selectAll("svg")
-        //       .style('width', "20px")
-        //       .style('height', "20px");
-
-        //     layer.selectAll("svg").selectAll("text")
-        //       .style("opacity", 0);
-
-        //     layer.selectAll("svg").selectAll("image")
-        //       .style("opacity", 0);
-        // }
-
-        // layer.selectAll("svg").selectAll("image")
-        //   .on("click", function(d,i) { window.open(J.link(d));});
       };
     };
     overlay.setMap(map);
