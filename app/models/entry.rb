@@ -131,7 +131,7 @@ class Entry < ActiveRecord::Base
     feed.to_json
   end
 
-  def generate_landing_images
+  def self.two_random_images
     images = []
     until images.count == 2 do
       find_image = rand(66000)
@@ -143,21 +143,6 @@ class Entry < ActiveRecord::Base
       end
     end
     images
-  end
-
-  def self.two_random_images
-    if images = $redis.get('images')
-      return images
-    else
-      new_images = Entry.generate_landing_images
-    end
-
-    if new_images
-      $redis.set('images', new_images)
-      expire_time = Time.now.to_i + 2.minutes
-      $redis.expireat('images', expire_time)
-    end
-    new_images
   end
 
 end

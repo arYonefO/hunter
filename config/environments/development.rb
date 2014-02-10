@@ -9,6 +9,13 @@ LecheAsada::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.cache_store = :redis_store, 'redis://localhost:6379/0/cache'
+
+  config.action_dispatch.rack_cache = {
+  metastore:   'redis://localhost:6379/1/metastore',
+  entitystore: 'redis://localhost:6379/1/entitystore'
+  }
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

@@ -30,6 +30,11 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :development do
+  gem 'redis-rails'
+  gem 'rack-cache'
+end
+
 group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'childprocess', '0.3.9'
