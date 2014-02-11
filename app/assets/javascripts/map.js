@@ -5,6 +5,27 @@ $(document).ready(function(){
     center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+
+  var acSetup = {
+    types: ['(regions)']
+  }
+
+  var userInput = document.getElementById('searchfield')
+  console.log(userInput)
+
+  var autocomplete = new google.maps.places.Autocomplete(userInput, acSetup);
+  autocomplete.bindTo('bounds', map);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(13);
+    }
+  })
+
   ////////////////////////////////////////////////////////
   var J = (function(){
     // var _link = function(j) { return j.url; };
@@ -27,7 +48,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://obscure-hollows-9858.herokuapp.com/feed", function(data) {
+  d3.json("http://localhost:3000/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
 
