@@ -10,18 +10,17 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Load data up to AWS and point heroku deploy to it
- - Add some more mobile friendly stylings
+ - Look at Google maps API to better understand it
+ - 2nd pass at adding some more mobile friendly stylings
+ - User instructions
 
 ### Things to get back to:
  - randomise pretty line, for both instances
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
  - Build title with d3 (MAINTAIN!)
- - Look at Google maps API to better understand it
- - Add lookup search field for the google map
+ - Add graffiti texture as a frosted background
  - Sort out proper colour scheme
  - Consider caching the two_random_images
-
 
 ### Done:
  - Add spork and factorygirl to facilitate testing
@@ -49,8 +48,14 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - build down arrow (Check out SIMBOL?)
   - Deploy next version of app (v2)
  - Make the images flexible?
+ - 1st pass at adding some more mobile friendly stylings
+ - Load data up to AWS and point heroku deploy to it
+ - Implement caching of feed data (Tried memcache, settled on Redis, still might use Postgres JSON or HSTORE)
+ - Need to look at auto-complete and the places library (want to find a cities/towns category)
+ - Need to instigate minimum zoom level
 
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
  - hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
+ - Arrow continues to be completely random between browsers and devices... chopped off at the bottom semi-regularly

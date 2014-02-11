@@ -53,8 +53,6 @@ describe Entry do
     end
   end
 
-
-
   describe '.ingest' do
     API_RESPONSE =
     [
