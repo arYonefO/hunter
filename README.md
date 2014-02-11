@@ -11,7 +11,6 @@ To find graffiti/street art hot-spots in cities around the world
 
 ### Priority:
  - Look at Google maps API to better understand it
- - Add lookup search field for the google map
  - 2nd pass at adding some more mobile friendly stylings
  - User instructions
 
@@ -52,6 +51,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - 1st pass at adding some more mobile friendly stylings
  - Load data up to AWS and point heroku deploy to it
  - Implement caching of feed data (Tried memcache, settled on Redis, still might use Postgres JSON or HSTORE)
+ - Need to look at auto-complete and the places library (want to find a cities/towns category)
  - Need to instigate minimum zoom level
 
 
