@@ -22,7 +22,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://obscure-hollows-9858.herokuapp.com/feed", function(data) {
+  d3.json("http://localhost:3000/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
     overlay.onAdd = function() {
@@ -42,16 +42,17 @@ $(document).ready(function(){
           .attr("class", "marker");
 
         marker.append("svg:rect")
-              .attr("height", 8)
-              .attr("width", 8)
+              .attr("height", 3)
+              .attr("width", 3)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
-                  .range(["#602A75", "#1AA186"]);
+                  .range(["#0C5244", "#1ED6B1"]);
                   return colour(J.prox(d)/6 + 20);
               })
               .attr("stroke", "#0f0f02")
               .attr("stroke-width", 0.5)
+              .on('mouseover', scatter)
 
               console.log(graffMap.map.zoom)
 
@@ -62,6 +63,26 @@ $(document).ready(function(){
               .style("left", (d.x) + "px")
               .style("top", (d.y) + "px");
         }
+
+        function scatter(d){
+          console.log("the event has fired")
+          d = new google.maps.LatLng(J.lat(d), J.lon(d));
+          d = projection.fromLatLngToDivPixel(d);
+          console.log(d.x)
+          console.log((d.x + 15) + "px")
+          console.log(this)
+          d3.select(this)
+            .transition()
+            .duration(800)
+            .attr("x", (d.x + 15) + "px")
+            .attr("y", (d.y + 15) + "px")
+          //   setTimeout(d3.select(this)
+          //                .attr("x", (d.x - 15) + "px")
+          //                .attr("y", (d.y - 15) + "px")
+          //                .enter, 5000);
+          console.log(this)
+        }
+
       };
     };
 
