@@ -22,7 +22,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://obscure-hollows-9858.herokuapp.com/feed", function(data) {
+  d3.json("http://www.graffi.so/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
     overlay.onAdd = function() {
