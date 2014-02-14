@@ -22,6 +22,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Sort out proper colour scheme
  - Consider caching the two_random_images
  - Consider blurred graff texture as background
+ - Fix arrow render in Chrome
 
 ### Done:
  - Add spork and factorygirl to facilitate testing
