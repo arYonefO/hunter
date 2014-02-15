@@ -39,11 +39,11 @@ $(document).ready(function(){
           .each(transformMarker)
           .enter().append("svg:svg")
           .each(transformMarker)
-          .attr("class", "marker");
+          .on('mouseover', scatter);
 
         marker.append("svg:rect")
-              .attr("height", 3)
-              .attr("width", 3)
+              .attr("height", 7)
+              .attr("width", 7)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
@@ -52,7 +52,6 @@ $(document).ready(function(){
               })
               .attr("stroke", "#0f0f02")
               .attr("stroke-width", 0.5)
-              .on('mouseover', scatter)
 
               console.log(graffMap.map.zoom)
 
@@ -72,10 +71,10 @@ $(document).ready(function(){
           console.log((d.x + 15) + "px")
           console.log(this)
           d3.select(this)
-            .transition()
-            .duration(800)
-            .attr("x", (d.x + 15) + "px")
-            .attr("y", (d.y + 15) + "px")
+            // .transition()
+            // .duration(800)
+            .attr("x", (d.x + 15))
+            .attr("y", (d.y + 15))
           //   setTimeout(d3.select(this)
           //                .attr("x", (d.x - 15) + "px")
           //                .attr("y", (d.y - 15) + "px")

@@ -23,6 +23,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Consider caching the two_random_images
  - Consider blurred graff texture as background
  - Fix arrow render in Chrome
+ - Transition color on markers from dark to light?
 
 ### Done:
  - Add spork and factorygirl to facilitate testing

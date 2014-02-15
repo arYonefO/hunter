@@ -30,4 +30,4 @@ $(document).ready(function(){
                 })
                 .attr('stroke', '#000000')
                 .attr('stroke-width', 1)
-          })();
+          });
