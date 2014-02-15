@@ -20,6 +20,9 @@ gem 'database_cleaner'
 # caching funsies
 gem 'redis'
 
+# cors
+gem 'rack-cors', :require => 'rack/cors'
+
 group :doc do
   gem 'sdoc', require: false
 end
