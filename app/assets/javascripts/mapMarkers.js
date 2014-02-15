@@ -22,7 +22,7 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://localhost:3000/feed", function(data) {
+  d3.json("http://www.graffi.so/feed", function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
     overlay.onAdd = function() {
@@ -42,8 +42,9 @@ $(document).ready(function(){
           .on('mouseover', scatter);
 
         marker.append("svg:rect")
-              .attr("height", 7)
-              .attr("width", 7)
+
+              .attr("height", 6)
+              .attr("width", 6)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
