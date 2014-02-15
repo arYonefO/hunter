@@ -42,8 +42,8 @@ $(document).ready(function(){
           .attr("class", "marker");
 
         marker.append("svg:rect")
-              .attr("height", 8)
-              .attr("width", 8)
+              .attr("height", 6)
+              .attr("width", 6)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
