@@ -185,6 +185,11 @@ footer {
   text-align: center;
 }
 
+#animate-arrow:hover{
+/*  -webkit-transform: rotateY(360deg);*/
+  transform: scale(2);
+}
+
 /*media queries */
 
 @media screen and (max-width: 483px) {
@@ -207,7 +212,6 @@ footer {
   }
 
   .arrow{
-    font-size: 9em;
     margin: 3px;
     padding: 3px;
     min-height: 140px;
