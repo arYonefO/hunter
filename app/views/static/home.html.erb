@@ -2,15 +2,15 @@
 
 <div class="pretty-line"></div>
 
-  <div class="landing-graphics">
-    <div class="graff-holder first">
-      <%= render :partial => 'graff_image', :locals =>{:index => 0} %>
-    </div>
-    <div class="arrow">&#x21AF</div>
-    <div class="graff-holder">
-      <%= render :partial => 'graff_image', :locals =>{:index => 1} %>
-    </div>
+<div class="landing-graphics">
+  <div class="graff-holder first">
+    <%= render :partial => 'graff_image', :locals =>{:index => 0} %>
   </div>
+  <div class="center-box"><%= render 'arrow' %></div>
+  <div class="graff-holder">
+    <%= render :partial => 'graff_image', :locals =>{:index => 1} %>
+  </div>
+</div>
 
 <div class="pretty-line"></div>
 

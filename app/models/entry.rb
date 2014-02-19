@@ -131,9 +131,9 @@ class Entry < ActiveRecord::Base
     feed.to_json
   end
 
-  def self.two_random_images
+  def self.random_images(this_many)
     images = []
-    until images.count == 2 do
+    until images.count == this_many do
       find_image = rand(66000)
       record = Entry.find_by(id: find_image)
       if record
