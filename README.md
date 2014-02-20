@@ -1,4 +1,4 @@
-### hunter - Leche Asada
+### hunter - Leche Asada - Graffi.so
 ======
 
 ### Purpose:
@@ -10,7 +10,8 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Scatter points on mouse over
+ - Zone out all the results, have them all cache seperately
+ - Adjust query field to return the appropriate zones
  - 2nd pass at adding some more mobile friendly stylings
  - User instructions
 
@@ -20,10 +21,8 @@ To find graffiti/street art hot-spots in cities around the world
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
  - Build title with d3 (MAINTAIN!)
  - Sort out proper colour scheme
- - Consider caching the two_random_images
+ - Consider caching the random_images returns...
  - Consider blurred graff texture as background
- - Fix arrow render in Chrome
- - Transition color on markers from dark to light?
 
 ### Done:
  - Add spork and factorygirl to facilitate testing
@@ -57,6 +56,10 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Need to look at auto-complete and the places library (want to find a cities/towns category)
  - Need to instigate minimum zoom level
  - Look at Google maps API to better understand it
+ - Scatter points on mouse over
+ - Fix arrow render in Firefox (CSSed it)
+ - Transition color on markers from dark to light?
+
 
 
 ### Issues:
