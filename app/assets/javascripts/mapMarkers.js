@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  function numRand(limit){
+    return Math.floor(Math.random()*limit);
+  }
+
   ////////////////////////////////////////////////////////
   var J = (function(){
     // var _link = function(j) { return j.url; };
@@ -68,24 +72,20 @@ $(document).ready(function(){
           console.log("the event has fired")
           d = new google.maps.LatLng(J.lat(d), J.lon(d));
           d = projection.fromLatLngToDivPixel(d);
-          console.log(d.x)
-          console.log((d.x + 15) + "px")
-          console.log(this)
           d3.select(this)
-            // .transition()
-            // .duration(800)
-            .attr("x", (d.x + 15))
-            .attr("y", (d.y + 15))
-          //   setTimeout(d3.select(this)
-          //                .attr("x", (d.x - 15) + "px")
-          //                .attr("y", (d.y - 15) + "px")
-          //                .enter, 5000);
-          console.log(this)
+            .transition()
+            .duration(2000)
+            .style("left", (d.x + (numRand(301) - 150)) + "px")
+            .style("top", (d.y + (numRand(301) - 150)) + "px")
+            .transition()
+            .delay(10000)
+            .duration(2000)
+            .style("left", (d.x) + "px")
+            .style("top", (d.y) + "px")
         }
 
       };
     };
-
     overlay.setMap(graffMap.map);
   });
 
