@@ -10,17 +10,20 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Look at Google maps API to better understand it
+ - Scatter points on mouse over
  - 2nd pass at adding some more mobile friendly stylings
  - User instructions
 
 ### Things to get back to:
+ - capture search locations and save in DB for later reference
  - randomise pretty line, for both instances
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
  - Build title with d3 (MAINTAIN!)
- - Add graffiti texture as a frosted background
  - Sort out proper colour scheme
  - Consider caching the two_random_images
+ - Consider blurred graff texture as background
+ - Fix arrow render in Chrome
+ - Transition color on markers from dark to light?
 
 ### Done:
  - Add spork and factorygirl to facilitate testing
@@ -53,9 +56,16 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Implement caching of feed data (Tried memcache, settled on Redis, still might use Postgres JSON or HSTORE)
  - Need to look at auto-complete and the places library (want to find a cities/towns category)
  - Need to instigate minimum zoom level
+ - Look at Google maps API to better understand it
 
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
  - hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
  - Arrow continues to be completely random between browsers and devices... chopped off at the bottom semi-regularly
+
+### Other graffiti projects
+  - http://www.streetartview.com/
+  - http://www.streetart-community.com/
+  - http://geostreetart.com/
+  - http://1amsf.com/mobile/about-mobile/

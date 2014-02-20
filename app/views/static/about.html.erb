@@ -1,0 +1,29 @@
+<%= render 'header' %>
+
+<div class="pretty-line"></div>
+
+<div class="landing-graphics">
+  <div>
+    <div class="graff-holder first">
+      <%= render :partial => 'graff_image', :locals =>{:index => 0} %>
+    </div>
+    <div class="graff-holder">
+      <%= render :partial => 'graff_image', :locals =>{:index => 1} %>
+    </div>
+  </div>
+  <div class='center-box'>
+    <span class="text-center"><h3>You found it!</h3></span><br>
+    <p>This little app aims to map out all sorts of street art hotspots around the world. There is much work to be done!</p><br>
+    <p>It already has over 63,000 entries from across the world. That is why it takes a while to draw on the map. Sorting that out is one of several pending tasks.</p>
+  </div>
+  <div>
+    <div class="graff-holder">
+      <%= render :partial => 'graff_image', :locals =>{:index => 2} %>
+    </div>
+    <div class="graff-holder">
+      <%= render :partial => 'graff_image', :locals =>{:index => 3} %>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>

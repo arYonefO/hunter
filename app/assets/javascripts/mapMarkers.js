@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  function numRand(limit){
+    return Math.floor(Math.random()*limit);
+  }
+
   ////////////////////////////////////////////////////////
   var J = (function(){
     // var _link = function(j) { return j.url; };
@@ -39,15 +43,16 @@ $(document).ready(function(){
           .each(transformMarker)
           .enter().append("svg:svg")
           .each(transformMarker)
-          .attr("class", "marker");
+          .on('mouseover', scatter);
 
         marker.append("svg:rect")
-              .attr("height", 8)
-              .attr("width", 8)
+
+              .attr("height", 6)
+              .attr("width", 6)
               .attr('fill', function(d){
                  var colour = d3.scale.linear()
                   .domain([0, 100])
-                  .range(["#602A75", "#1AA186"]);
+                  .range(["#0C5244", "#1ED6B1"]);
                   return colour(J.prox(d)/6 + 20);
               })
               .attr("stroke", "#0f0f02")
@@ -62,9 +67,25 @@ $(document).ready(function(){
               .style("left", (d.x) + "px")
               .style("top", (d.y) + "px");
         }
+
+        function scatter(d){
+          console.log("the event has fired")
+          d = new google.maps.LatLng(J.lat(d), J.lon(d));
+          d = projection.fromLatLngToDivPixel(d);
+          d3.select(this)
+            .transition()
+            .duration(2000)
+            .style("left", (d.x + (numRand(301) - 150)) + "px")
+            .style("top", (d.y + (numRand(301) - 150)) + "px")
+            .transition()
+            .delay(10000)
+            .duration(2000)
+            .style("left", (d.x) + "px")
+            .style("top", (d.y) + "px")
+        }
+
       };
     };
-
     overlay.setMap(graffMap.map);
   });
 

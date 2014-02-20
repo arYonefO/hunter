@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   graffMap = {
     map: new google.maps.Map(d3.select("#map").node(), {
-    zoom: 13,
+    zoom: 16,
     minZoom: 10,
     center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -27,7 +27,10 @@ $(document).ready(function(){
                 { "featureType": "poi.park",
                   "elementType": "labels.icon",
                   "stylers": [ { "lightness": -14 },
-                              { "visibility": "simplified" } ] }
+                              { "visibility": "simplified" } ] },
+                { "featureType": "poi",
+                  "elementType": "labels",
+                  "stylers": [ { "visibility": "off" } ] }
               ]
 
   }
