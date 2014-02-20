@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   graffMap = {
     map: new google.maps.Map(d3.select("#map").node(), {
-    zoom: 16,
+    zoom: 13,
     minZoom: 10,
     center: new google.maps.LatLng(37.773887, -122.43782),
     mapTypeId: google.maps.MapTypeId.ROADMAP
