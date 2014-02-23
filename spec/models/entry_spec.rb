@@ -14,6 +14,7 @@ describe Entry do
   it { should respond_to(:latitude) }
   it { should respond_to(:prox) }
   it { should respond_to(:location) }
+  it { should respond_to(:zone) }
 
   it { should be_valid}
 
@@ -38,7 +39,13 @@ describe Entry do
     end
   end
 
-  describe ".proximity count" do
+  describe ".generate_zone" do
+    describe "should return the correct zone for an entry" do
+      its(:zone) { should eq 36 }
+    end
+  end
+
+  describe ".proximity_score" do
 
     describe "should return zero if there are no nearby entries" do
       its(:prox) { should eq 0 }

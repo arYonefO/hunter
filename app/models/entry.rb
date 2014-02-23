@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score
+  after_validation :proximity_score, :generate_zone
 
   def location
     [latitude.to_f, longitude.to_f]
@@ -29,6 +29,18 @@ class Entry < ActiveRecord::Base
   def proximity_score
     nearby_entries_count = Entry.near(self.location, 1).count
     self.update_attribute(:prox, nearby_entries_count)
+  end
+
+  def generate_zone
+    zoning = (self.latitude.to_i + 180) / 6
+    self.update_attribute(:zone, zoning)
+  end
+
+  def self.zone_the_entries
+    ordered_entries = Entry.all.sort_by(&:updated_at)
+    ordered_entries.each do |entry|
+      entry.generate_zone
+    end
   end
 
   def self.chase_tag(tag)
