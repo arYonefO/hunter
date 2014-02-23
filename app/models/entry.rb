@@ -10,8 +10,7 @@ class Entry < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   validates :url, presence: true, uniqueness: true
-  validates :longitude, presence: true
-  validates :latitude, presence: true
+  validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
   after_validation :proximity_score
