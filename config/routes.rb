@@ -1,7 +1,7 @@
 LecheAsada::Application.routes.draw do
   root 'static#home'
 
-  match '/feed', to: 'static#feed', via: 'get'
+  match '/feed/:lng', to: 'static#feed', via: 'get'
   match 'about', to: 'static#about', via: 'get'
 
   # Playpen

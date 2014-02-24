@@ -26,7 +26,11 @@ $(document).ready(function(){
   }());
   ////////////////////////////////////////////////////////
 
-  d3.json("http://www.graffi.so/feed", function(data) {
+  function maplng(){
+    return graffMap.map.getCenter().e
+  }
+
+  d3.json("http://localhost:3002/feed/" + maplng(), function(data) {
     console.log(data)
     var overlay = new google.maps.OverlayView();
     overlay.onAdd = function() {

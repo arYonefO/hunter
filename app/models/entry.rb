@@ -32,7 +32,7 @@ class Entry < ActiveRecord::Base
   end
 
   def generate_zone
-    zoning = (self.latitude.to_i + 180) / 6
+    zoning = (self.longitude.to_i + 180) / 4
     self.update_attribute(:zone, zoning)
   end
 
@@ -115,24 +115,31 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def self.prepare_for_launch
-    if feed = $redis.get('feed')
+  def self.prepare_for_launch(lng_for_zone)
+    zoning = (lng_for_zone.to_i + 180) / 4
+    if feed = $redis.get("#{zoning}")
       return feed
     else
-      new_feed = Entry.generate_feed_JSON
+      new_feed = Entry.generate_feed_JSON(zoning)
     end
 
     if new_feed
-      $redis.set('feed', new_feed)
+      $redis.set("#{zoning}", new_feed)
       expire_time = Time.now.to_i + 24.hours
-      $redis.expireat('feed', expire_time)
+      $redis.expireat("#{zoning}", expire_time)
     end
     new_feed
   end
 
-  def self.generate_feed_JSON
+  def self.generate_feed_JSON(zoning)
     feed = []
-    Entry.where("prox >= ?", 20).find_each do |entry|
+   p start = zoning-1
+   p finish = zoning+1
+    result_set = Entry.where("prox >= ?", 20).keep_if do |entry|
+      (start..finish).include?(entry.zone)
+    end
+
+    result_set.each do |entry|
       feed << {
                 lat: entry.latitude,
                 lng: entry.longitude,
