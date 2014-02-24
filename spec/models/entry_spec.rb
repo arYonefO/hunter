@@ -41,7 +41,7 @@ describe Entry do
 
   describe ".generate_zone" do
     describe "should return the correct zone for an entry" do
-      its(:zone) { should eq 36 }
+      its(:zone) { should eq 9 }
     end
   end
 
