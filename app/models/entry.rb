@@ -32,7 +32,7 @@ class Entry < ActiveRecord::Base
   end
 
   def generate_zone
-    zoning = (self.longitude.to_i + 180) / 4
+    zoning = (self.longitude.to_i + 180) / 3
     self.update_attribute(:zone, zoning)
   end
 
@@ -116,7 +116,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch(lng_for_zone)
-    zoning = (lng_for_zone.to_i + 180) / 4
+    zoning = (lng_for_zone.to_i + 180) / 3
     if feed = $redis.get("#{zoning}")
       return feed
     else
@@ -125,7 +125,7 @@ class Entry < ActiveRecord::Base
 
     if new_feed
       $redis.set("#{zoning}", new_feed)
-      expire_time = Time.now.to_i + 24.hours
+      expire_time = Time.now.to_i + 72.hours
       $redis.expireat("#{zoning}", expire_time)
     end
     new_feed

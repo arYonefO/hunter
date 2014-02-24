@@ -49,10 +49,10 @@ $(document).ready(function(){
     var place = autocomplete.getPlace();
     if (place.geometry.viewport) {
       graffMap.map.fitBounds(place.geometry.viewport);
-      graffMap.map.setZoom(12);
+      graffMap.map.setZoom(13);
     } else {
       map.setCenter(place.geometry.location);
-      graffMap.map.setZoom(12);
+      graffMap.map.setZoom(13);
     }
   })
 })
