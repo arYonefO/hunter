@@ -57,7 +57,7 @@ d3ToMap.applyd3ToMap = function(data){
                 var colour = d3.scale.linear()
                                      .domain([0, 100])
                                      .range(["#0C5244", "#1ED6B1"]);
-                return colour(J.prox(d)/6 + 20);
+                return colour(J.prox(d)/6 + 10);
               })
               .attr("stroke", "#0f0f02")
               .attr("stroke-width", 0.5)

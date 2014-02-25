@@ -24,7 +24,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Consider blurred graff texture as background
  - Need to change many of the instances of Entry.all into batch do. Don't need to have every Entry instantitated at the same time
 
-
 ### Done:
  - Add spork and factorygirl to facilitate testing
  - Build data-miner-tag

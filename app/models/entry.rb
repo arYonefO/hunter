@@ -20,26 +20,32 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prox_the_entries
+    c=0
     ordered_entries = Entry.all.sort_by(&:updated_at)
     ordered_entries.each do |entry|
       entry.proximity_score
+      c +=1
+      p "#{c} done" if c % 2000 == 0
     end
   end
 
   def proximity_score
-    nearby_entries_count = Entry.near(self.location, 1).count
+    nearby_entries_count = Entry.near(self.location, 0.5).count
     self.update_attribute(:prox, nearby_entries_count)
   end
 
   def generate_zone
-    zoning = (self.longitude.to_i + 180) / 3
+    zoning = (self.longitude.to_i + 180) / 2
     self.update_attribute(:zone, zoning)
   end
 
   def self.zone_the_entries
+    c=0
     ordered_entries = Entry.all.sort_by(&:updated_at)
     ordered_entries.each do |entry|
       entry.generate_zone
+      c += 1
+      p "#{c} done" if c % 5000 == 0
     end
   end
 
@@ -116,7 +122,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch(lng_for_zone)
-    zoning = (lng_for_zone.to_i + 180) / 3
+    zoning = (lng_for_zone.to_i + 180) / 2
     if feed = $redis.get("#{zoning}")
       return feed
     else
