@@ -1,34 +1,38 @@
-$(document).ready(function(){
+var d3ToMap = {}
 
-  function numRand(limit){
-    return Math.floor(Math.random()*limit);
-  }
+d3ToMap.numRand = function(limit){
+  return Math.floor(Math.random()*limit);
+}
 
-  ////////////////////////////////////////////////////////
-  var J = (function(){
-    // var _link = function(j) { return j.url; };
-    var _lat = function(j) { return j.lat; };
-    var _lon = function(j) { return j.lng; };
-    var _prox = function(j) { return j.prox; };
-    // var _created = function(j) { return j.posted_at; };
-    // var _thumbnail = function(j) { return j.thumbnail_url; };
+d3ToMap.maplng = function(){
+  return graffMap.map.getCenter().e
+}
 
-    var f = {};
+var J = (function(){
+  // var _link = function(j) { return j.url; };
+  var _lat = function(j) { return j.lat; };
+  var _lon = function(j) { return j.lng; };
+  var _prox = function(j) { return j.prox; };
+  // var _created = function(j) { return j.posted_at; };
+  // var _thumbnail = function(j) { return j.thumbnail_url; };
 
-    // f.link      = _link;
-    f.lat       = _lat;
-    f.lon      = _lon;
-    f.prox     = _prox;
-    // f.created   = _created;
-    // f.thumbnail = _thumbnail;
+  var f = {};
 
-    return f;
-  }());
-  ////////////////////////////////////////////////////////
+  // f.link      = _link;
+  f.lat       = _lat;
+  f.lon      = _lon;
+  f.prox     = _prox;
+  // f.created   = _created;
+  // f.thumbnail = _thumbnail;
 
-  d3.json("http://www.graffi.so/feed", function(data) {
+  return f;
+}());
+////////////////////////////////////////////////////////
+
+d3ToMap.applyd3ToMap = function(data){
     console.log(data)
     var overlay = new google.maps.OverlayView();
+
     overlay.onAdd = function() {
 
       var layer = d3.select(this.getPanes().overlayMouseTarget)
@@ -39,21 +43,21 @@ $(document).ready(function(){
         var projection = this.getProjection(), padding = 10;
 
         var marker = layer.selectAll("svg")
-          .data(data)
-          .each(transformMarker)
-          .enter().append("svg:svg")
-          .each(transformMarker)
-          .on('mouseover', scatter);
+                          .data(data)
+                          .each(transformMarker)
+                          .enter().append("svg:svg")
+                          .each(transformMarker)
+                          .on('mouseover', scatter);
 
         marker.append("svg:rect")
 
               .attr("height", 6)
               .attr("width", 6)
               .attr('fill', function(d){
-                 var colour = d3.scale.linear()
-                  .domain([0, 100])
-                  .range(["#0C5244", "#1ED6B1"]);
-                  return colour(J.prox(d)/6 + 20);
+                var colour = d3.scale.linear()
+                                     .domain([0, 100])
+                                     .range(["#0C5244", "#1ED6B1"]);
+                return colour(J.prox(d)/6 + 10);
               })
               .attr("stroke", "#0f0f02")
               .attr("stroke-width", 0.5)
@@ -75,8 +79,8 @@ $(document).ready(function(){
           d3.select(this)
             .transition()
             .duration(2000)
-            .style("left", (d.x + (numRand(301) - 150)) + "px")
-            .style("top", (d.y + (numRand(301) - 150)) + "px")
+            .style("left", (d.x + (d3ToMap.numRand(301) - 150)) + "px")
+            .style("top", (d.y + (d3ToMap.numRand(301) - 150)) + "px")
             .transition()
             .delay(10000)
             .duration(2000)
@@ -86,7 +90,12 @@ $(document).ready(function(){
 
       };
     };
-    overlay.setMap(graffMap.map);
-  });
+  overlay.setMap(graffMap.map);
+}
 
+$(document).ready(function(){
+  var url = "http://localhost:3002/feed/" + d3ToMap.maplng()
+  d3.json(url, function(data){
+    d3ToMap.applyd3ToMap(data)
+  })
 })

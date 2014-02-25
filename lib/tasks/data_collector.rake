@@ -19,6 +19,11 @@ namespace :db do
     Entry.prox_the_entries
   end
 
+  desc "Update the proximity of entries"
+  task zone: :environment do
+    Entry.zone_the_entries
+  end
+
   desc "hoover the selected tag"
   task hoover_tag: :environment do
     Entry.hoover_tag('leicestergraffiti')

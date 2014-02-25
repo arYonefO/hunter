@@ -13,22 +13,40 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score
+  after_validation :proximity_score, :generate_zone
 
   def location
     [latitude.to_f, longitude.to_f]
   end
 
   def self.prox_the_entries
+    c=0
     ordered_entries = Entry.all.sort_by(&:updated_at)
     ordered_entries.each do |entry|
       entry.proximity_score
+      c +=1
+      p "#{c} done" if c % 2000 == 0
     end
   end
 
   def proximity_score
-    nearby_entries_count = Entry.near(self.location, 1).count
+    nearby_entries_count = Entry.near(self.location, 0.5).count
     self.update_attribute(:prox, nearby_entries_count)
+  end
+
+  def generate_zone
+    zoning = (self.longitude.to_i + 180) / 2
+    self.update_attribute(:zone, zoning)
+  end
+
+  def self.zone_the_entries
+    c=0
+    ordered_entries = Entry.all.sort_by(&:updated_at)
+    ordered_entries.each do |entry|
+      entry.generate_zone
+      c += 1
+      p "#{c} done" if c % 5000 == 0
+    end
   end
 
   def self.chase_tag(tag)
@@ -103,24 +121,31 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def self.prepare_for_launch
-    if feed = $redis.get('feed')
+  def self.prepare_for_launch(lng_for_zone)
+    zoning = (lng_for_zone.to_i + 180) / 2
+    if feed = $redis.get("#{zoning}")
       return feed
     else
-      new_feed = Entry.generate_feed_JSON
+      new_feed = Entry.generate_feed_JSON(zoning)
     end
 
     if new_feed
-      $redis.set('feed', new_feed)
-      expire_time = Time.now.to_i + 24.hours
-      $redis.expireat('feed', expire_time)
+      $redis.set("#{zoning}", new_feed)
+      expire_time = Time.now.to_i + 72.hours
+      $redis.expireat("#{zoning}", expire_time)
     end
     new_feed
   end
 
-  def self.generate_feed_JSON
+  def self.generate_feed_JSON(zoning)
     feed = []
-    Entry.where("prox >= ?", 20).find_each do |entry|
+   p start = zoning-1
+   p finish = zoning+1
+    result_set = Entry.where("prox >= ?", 20).keep_if do |entry|
+      (start..finish).include?(entry.zone)
+    end
+
+    result_set.each do |entry|
       feed << {
                 lat: entry.latitude,
                 lng: entry.longitude,
