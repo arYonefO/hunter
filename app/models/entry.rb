@@ -139,18 +139,17 @@ class Entry < ActiveRecord::Base
 
   def self.generate_feed_JSON(zoning)
     feed = []
-   p start = zoning-1
-   p finish = zoning+1
-    result_set = Entry.where("prox >= ?", 20).keep_if do |entry|
-      (start..finish).include?(entry.zone)
-    end
+    start = zoning-1
+    finish = zoning+1
 
-    result_set.each do |entry|
-      feed << {
+    Entry.where("prox >= ?", 20).find_each do |entry|
+      if (start..finish).include?(entry.zone)
+        feed << {
                 lat: entry.latitude,
                 lng: entry.longitude,
                 prox: entry.prox
-              }
+                }
+      end
     end
     feed.to_json
   end
