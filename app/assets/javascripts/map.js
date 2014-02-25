@@ -49,10 +49,13 @@ $(document).ready(function(){
     var place = autocomplete.getPlace();
     if (place.geometry.viewport) {
       graffMap.map.fitBounds(place.geometry.viewport);
-      graffMap.map.setZoom(13);
+      graffMap.map.setZoom(12);
     } else {
       map.setCenter(place.geometry.location);
-      graffMap.map.setZoom(13);
+      graffMap.map.setZoom(12);
     }
+    setTimeout(function(){ var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
+      d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
+    },100)
   })
 })
