@@ -94,7 +94,7 @@ d3ToMap.applyd3ToMap = function(data){
 }
 
 $(document).ready(function(){
-  var url = "http://localhost:3002/feed/" + d3ToMap.maplng()
+  var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
   d3.json(url, function(data){
     d3ToMap.applyd3ToMap(data)
   })
