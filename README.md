@@ -23,6 +23,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Consider caching the random_images returns...
  - Consider blurred graff texture as background
  - Need to change many of the instances of Entry.all into batch do. Don't need to have every Entry instantitated at the same time
+ - Some sort of progress bar or indication of loading activity
 
 ### Done:
  - Add spork and factorygirl to facilitate testing

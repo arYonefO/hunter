@@ -30,7 +30,8 @@ module LecheAsada
       allow do
         origins 'localhost:3000', '127.0.0.1:3000', 'www.graffi.so',
                 'graffi.so', 'https://www.graffi.so',
-                'https://graffi.so', 'obscure-hollows-9858.herokuapp.com'
+                'https://graffi.so', 'obscure-hollows-9858.herokuapp.com',
+                'http://www.graffi.so', 'http://graffi.so'
         resource '/feed', :headers => :any, :methods => [:get, :post]
       end
     end
