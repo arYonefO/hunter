@@ -10,7 +10,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - Adjust query field to return the appropriate zones
  - 2nd pass at adding some more mobile friendly stylings
  - User instructions
 
@@ -61,6 +60,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Fix arrow render in Firefox (CSSed it)
  - Transition color on markers from dark to light?
  - Zone out all the results, have them all cache seperately
+ - Adjust query field to return the appropriate zones
+
 
 
 
