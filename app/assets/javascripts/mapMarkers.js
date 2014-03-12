@@ -5,7 +5,7 @@ d3ToMap.numRand = function(limit){
 }
 
 d3ToMap.maplng = function(){
-  return graffMap.map.getCenter().e
+  return graffMap.map.getCenter().lng()
 }
 
 var J = (function(){

@@ -17,6 +17,7 @@ To find graffiti/street art hot-spots in cities around the world
  - capture search locations and save in DB for later reference
  - randomise pretty line, for both instances
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
+ -Optimise database queries and returns (index zone? Use sql intersection)
  - Build title with d3 (MAINTAIN!)
  - Sort out proper colour scheme
  - Consider caching the random_images returns...

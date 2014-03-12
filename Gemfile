@@ -27,8 +27,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
 group :production do
   gem 'rails_12factor'
 end
