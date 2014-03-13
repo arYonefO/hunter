@@ -1,3 +1,5 @@
+var graffMap
+
 $(document).ready(function(){
 
   graffMap = {
@@ -35,27 +37,32 @@ $(document).ready(function(){
 
   }
 
+  var mapSetUp = (function(){
+    graffMap.map.set('styles', graffMap.mapStyle)
 
-  graffMap.map.set('styles', graffMap.mapStyle)
+    var acSetup = { types: ['(regions)'] }
 
-  var acSetup = { types: ['(regions)'] }
+    var userInput = document.getElementById('searchfield')
 
-  var userInput = document.getElementById('searchfield')
+    var autocomplete = new google.maps.places.Autocomplete(userInput, acSetup);
+    autocomplete.bindTo('bounds', graffMap.map);
 
-  var autocomplete = new google.maps.places.Autocomplete(userInput, acSetup);
-  autocomplete.bindTo('bounds', graffMap.map);
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (place.geometry.viewport) {
+        graffMap.map.fitBounds(place.geometry.viewport);
+        graffMap.map.setZoom(12);
+      } else {
+        map.setCenter(place.geometry.location);
+        graffMap.map.setZoom(12);
+      }
+      setTimeout(function(){ var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
+        d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
+      },100)
+    })
+  }())
 
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    var place = autocomplete.getPlace();
-    if (place.geometry.viewport) {
-      graffMap.map.fitBounds(place.geometry.viewport);
-      graffMap.map.setZoom(12);
-    } else {
-      map.setCenter(place.geometry.location);
-      graffMap.map.setZoom(12);
-    }
-    setTimeout(function(){ var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
-      d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
-    },100)
-  })
-})
+
+
+
+}) // document.ready

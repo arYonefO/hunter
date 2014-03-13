@@ -8,7 +8,7 @@ d3ToMap.maplng = function(){
   return graffMap.map.getCenter().lng()
 }
 
-var J = (function(){
+var entry = (function(){
   // var _link = function(j) { return j.url; };
   var _lat = function(j) { return j.lat; };
   var _lon = function(j) { return j.lng; };
@@ -57,7 +57,7 @@ d3ToMap.applyd3ToMap = function(data){
                 var colour = d3.scale.linear()
                                      .domain([0, 100])
                                      .range(["#0C5244", "#1ED6B1"]);
-                return colour(J.prox(d)/6 + 10);
+                return colour(entry.prox(d)/6 + 10);
               })
               .attr("stroke", "#0f0f02")
               .attr("stroke-width", 0.5)
@@ -65,7 +65,7 @@ d3ToMap.applyd3ToMap = function(data){
               console.log(graffMap.map.zoom)
 
         function transformMarker(d) {
-          d = new google.maps.LatLng(J.lat(d), J.lon(d));
+          d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
           d = projection.fromLatLngToDivPixel(d);
           return d3.select(this)
               .style("left", (d.x) + "px")
@@ -74,7 +74,7 @@ d3ToMap.applyd3ToMap = function(data){
 
         function scatter(d){
           console.log("the event has fired")
-          d = new google.maps.LatLng(J.lat(d), J.lon(d));
+          d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
           d = projection.fromLatLngToDivPixel(d);
           d3.select(this)
             .transition()
@@ -82,7 +82,7 @@ d3ToMap.applyd3ToMap = function(data){
             .style("left", (d.x + (d3ToMap.numRand(301) - 150)) + "px")
             .style("top", (d.y + (d3ToMap.numRand(301) - 150)) + "px")
             .transition()
-            .delay(10000)
+            .delay(12000)
             .duration(2000)
             .style("left", (d.x) + "px")
             .style("top", (d.y) + "px")
@@ -94,7 +94,7 @@ d3ToMap.applyd3ToMap = function(data){
 }
 
 $(document).ready(function(){
-  var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
+  var url = "http://localhost:3002/feed/" + d3ToMap.maplng()
   d3.json(url, function(data){
     d3ToMap.applyd3ToMap(data)
   })
