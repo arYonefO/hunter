@@ -56,7 +56,7 @@ $(document).ready(function(){
         map.setCenter(place.geometry.location);
         graffMap.map.setZoom(12);
       }
-      setTimeout(function(){ var url = "http://www.graffi.so/feed/" + d3ToMap.maplng()
+      setTimeout(function(){ var url = "https://www.graffi.so/feed/" + d3ToMap.maplng()
         d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
       },100)
     })
