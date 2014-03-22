@@ -33,7 +33,8 @@ $(document).ready(function(){
                 { "featureType": "poi",
                   "elementType": "labels",
                   "stylers": [ { "visibility": "off" } ] }
-              ]
+              ],
+      data_url: "http://www.graffi.so/feed/"
 
   }
 
@@ -56,7 +57,7 @@ $(document).ready(function(){
         map.setCenter(place.geometry.location);
         graffMap.map.setZoom(12);
       }
-      setTimeout(function(){ var url = "http://graffi.so/feed/" + d3ToMap.maplng()
+      setTimeout(function(){ var url = graffMap.data_url + d3ToMap.maplng()
         d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
       },100)
     })

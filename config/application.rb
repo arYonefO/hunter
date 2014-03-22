@@ -24,11 +24,11 @@ module LecheAsada
 
     config.middleware.use Rack::Cors do
       allow do
-        origins 'localhost:3000', '127.0.0.1:3000', 'www.graffi.so',
+        origins 'localhost:3000', '127.0.0.1:3000', 'www.graffi.so', 'localhost:3002', '127.0.0.1:3002',
                 'graffi.so', 'https://www.graffi.so',
                 'https://graffi.so', 'obscure-hollows-9858.herokuapp.com',
-                'http://www.graffi.so', 'http://graffi.so'
-        resource '/feed', :headers => :any, :methods => [:get, :post]
+                'http://www.graffi.so', 'http://graffi.so', 'origin'
+        resource '/feed', :headers => :any, :methods => [:get]
       end
     end
   end

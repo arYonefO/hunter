@@ -10,8 +10,10 @@ To find graffiti/street art hot-spots in cities around the world
  - Maintain geospatial accuracy to 90% that a point falls within 500 yards of it's actual location (Very difficult to verify and very dependent on externalities)
 
 ### Priority:
- - 2nd pass at adding some more mobile friendly stylings
+ - Fix CORS issues
+ - Animate title with D3
  - User instructions
+ - Nav bar
 
 ### Things to get back to:
  - capture search locations and save in DB for later reference
@@ -62,6 +64,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Transition color on markers from dark to light?
  - Zone out all the results, have them all cache seperately
  - Adjust query field to return the appropriate zones
+ - 2nd pass at adding some more mobile friendly stylings
 
 
 
@@ -71,6 +74,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
  - hoover_tag will just start from the beginning again if it covers all of the images with that tag. (preciousgraffiti)
  - Changing zoom level while transitions are taking place means that points get lost
+ -CORS still messing me around
 
 ### Other graffiti projects
   - http://www.streetartview.com/

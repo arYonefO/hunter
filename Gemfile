@@ -17,6 +17,10 @@ gem 'whenever'
 gem 'geocoder'
 gem 'database_cleaner'
 
+# web server
+gem 'unicorn'
+gem 'unicorn-rails'
+
 # caching funsies
 gem 'redis'
 

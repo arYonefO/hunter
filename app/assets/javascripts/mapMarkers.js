@@ -73,7 +73,6 @@ d3ToMap.applyd3ToMap = function(data){
         }
 
         function scatter(d){
-          console.log("the event has fired")
           d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
           d = projection.fromLatLngToDivPixel(d);
           d3.select(this)
@@ -94,7 +93,7 @@ d3ToMap.applyd3ToMap = function(data){
 }
 
 $(document).ready(function(){
-  var url = "http://graffi.so/feed/" + d3ToMap.maplng()
+  var url = graffMap.data_url + d3ToMap.maplng()
   d3.json(url, function(data){
     d3ToMap.applyd3ToMap(data)
   })
