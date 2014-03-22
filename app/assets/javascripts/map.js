@@ -34,7 +34,7 @@ $(document).ready(function(){
                   "elementType": "labels",
                   "stylers": [ { "visibility": "off" } ] }
               ],
-      data_url: "https://localhost:3002/feed/"
+      data_url: "http://www.graffi.so/feed/"
 
   }
 
