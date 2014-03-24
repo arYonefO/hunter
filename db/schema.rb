@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140324162725) do
   create_table "search_terms", force: true do |t|
     t.string   "search_term"
     t.integer  "count"
-    t.string   "when",        array: true
+    t.string   "when",        default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

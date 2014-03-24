@@ -3,7 +3,7 @@ class AddSearchTerms < ActiveRecord::Migration
     create_table :search_terms do |t|
       t.string :search_term
       t.integer :count
-      t.string :when, :array => true
+      t.string :when, :array => true, default: []
 
       t.timestamps
     end
