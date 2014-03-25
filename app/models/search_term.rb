@@ -7,7 +7,6 @@ class SearchTerm < ActiveRecord::Base
     time = Time.now.to_s
     if current_search_term
       current_search_term.count += 1
-      current_search_term.count_will_change!
       current_search_term.when.push(time)
       current_search_term.when_will_change!
       current_search_term.save
