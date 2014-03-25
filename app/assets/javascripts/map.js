@@ -60,6 +60,11 @@ $(document).ready(function(){
       setTimeout(function(){ var url = graffMap.data_url + d3ToMap.maplng()
         d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
       },100)
+      $.ajax({
+        type: "POST",
+        url: "/search_term",
+        data: { 'search_term': place.formatted_address }
+      });
     })
   }())
 

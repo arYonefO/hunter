@@ -12,4 +12,8 @@ FactoryGirl.define do
     label         "graffiti"
     chase         false
   end
+
+  factory :search_term do
+    search_term     "Paris, France"
+  end
 end
