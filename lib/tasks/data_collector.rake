@@ -19,6 +19,11 @@ namespace :db do
     Entry.prox_the_entries
   end
 
+  desc "Update the response_objects of entries"
+  task resp_obj: :environment do
+    Entry.serialize_the_entries
+  end
+
   desc "Update the proximity of entries"
   task zone: :environment do
     Entry.zone_the_entries

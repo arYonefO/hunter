@@ -57,6 +57,16 @@ class Entry < ActiveRecord::Base
                 }
   end
 
+  def self.serialize_the_entries
+    c=0
+    ordered_entries = Entry.all.sort_by(&:updated_at)
+    ordered_entries.each do |entry|
+      entry.generate_response_object
+      c += 1
+      p "#{c} done" if c % 5000 == 0
+    end
+  end
+
   def self.chase_tag(tag)
     Entry.ingest(Instagram.tag_recent_media(tag))
   end
@@ -165,7 +175,7 @@ class Entry < ActiveRecord::Base
   def self.random_images(this_many)
     images = []
     until images.count == this_many do
-      find_image = rand(66000)
+      find_image = rand(70000)
       record = Entry.find_by(id: find_image)
       if record
         url = record.url
