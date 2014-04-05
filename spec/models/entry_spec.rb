@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Entry do
-  let(:entry) { FactoryGirl.create(:entry) }
+  let(:entry) { FactoryGirl.create(:entry, { longitude: -122.437477, latitude: 37.771122 } ) }
 
   subject { entry }
 
@@ -47,7 +47,7 @@ describe Entry do
   end
 
   describe 'response_object' do
-    let(:response_object) { { 'lat' => 37.771122, 'lon' => -122.437477, 'prox' => 0 } }
+    let(:response_object) { { 'lat' => 37.771122, 'lng' => -122.437477, 'prox' => 0 } }
 
     its(:response_object) { should eq response_object }
   end

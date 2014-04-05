@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score, :generate_zone
+  after_validation :proximity_score, :generate_zone, :generate_response_object
 
   def location
     [latitude.to_f, longitude.to_f]
@@ -47,6 +47,14 @@ class Entry < ActiveRecord::Base
       c += 1
       p "#{c} done" if c % 5000 == 0
     end
+  end
+
+  def generate_response_object
+    self.response_object = {
+                "lat" => self.latitude,
+                "lng" => self.longitude,
+                "prox" => self.prox
+                }
   end
 
   def self.chase_tag(tag)
