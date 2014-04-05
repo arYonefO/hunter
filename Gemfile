@@ -23,6 +23,7 @@ gem 'unicorn-rails'
 
 # caching funsies
 gem 'redis'
+gem 'redis-rack-cache'
 
 # cors
 gem 'rack-cors', :require => 'rack/cors'
