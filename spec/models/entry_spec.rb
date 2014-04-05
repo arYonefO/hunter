@@ -15,6 +15,7 @@ describe Entry do
   it { should respond_to(:prox) }
   it { should respond_to(:location) }
   it { should respond_to(:zone) }
+  it { should respond_to(:response_object) }
 
   it { should be_valid}
 
@@ -43,6 +44,19 @@ describe Entry do
     describe "should return the correct zone for an entry" do
       its(:zone) { should eq 29 }
     end
+  end
+
+  describe 'response_object' do
+    let!(:entry1) { FactoryGirl.create(:entry) }
+    before(:each) do
+      @entry = Entry.new(@attr)
+      @response_object = { { proposal_id: 3 } => { email: 'yes', facebook: 'no' } }
+      @entry.response_object = @response_object
+    end
+
+    subject { entry1 }
+
+    its(:response_object) { should eq @response_object }
   end
 
   describe ".proximity_score" do
