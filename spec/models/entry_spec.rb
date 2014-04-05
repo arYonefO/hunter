@@ -47,16 +47,9 @@ describe Entry do
   end
 
   describe 'response_object' do
-    let!(:entry1) { FactoryGirl.create(:entry) }
-    before(:each) do
-      @entry = Entry.new(@attr)
-      @response_object = { { proposal_id: 3 } => { email: 'yes', facebook: 'no' } }
-      @entry.response_object = @response_object
-    end
+    let(:response_object) { { 'lat' => 37.771122, 'lon' => -122.437477, 'prox' => 0 } }
 
-    subject { entry1 }
-
-    its(:response_object) { should eq @response_object }
+    its(:response_object) { should eq response_object }
   end
 
   describe ".proximity_score" do
