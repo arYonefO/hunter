@@ -13,7 +13,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Animate title with D3
  - User instructions
  - Nav bar
- - Capture search locations and save in DB for later reference
+ - Hstore the DB
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -64,6 +64,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Adjust query field to return the appropriate zones
  - 2nd pass at adding some more mobile friendly stylings
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
+ - Capture search locations and save in DB for later reference
 
 
 

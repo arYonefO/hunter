@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score, :generate_zone
+  after_validation :proximity_score, :generate_zone, :set_response_object
 
   def location
     [latitude.to_f, longitude.to_f]
@@ -46,6 +46,32 @@ class Entry < ActiveRecord::Base
       entry.generate_zone
       c += 1
       p "#{c} done" if c % 5000 == 0
+    end
+  end
+
+  def set_response_object
+    response_object = self.response_object_hash
+    self.update_attribute(:response_object, response_object)
+  end
+
+  def response_object_hash
+    {
+      lat: self.latitude,
+      lng: self.longitude,
+      prox: self.prox
+    }
+  end
+
+  def self.serialize_the_entries
+    c=0
+    ordered_entries = Entry.all.sort_by(&:updated_at)
+    ordered_entries.each do |entry|
+      entry.set_response_object
+      c += 1
+      if c % 5000 == 0
+        p entry.response_object
+        p "#{c} done"
+      end
     end
   end
 
@@ -144,20 +170,16 @@ class Entry < ActiveRecord::Base
 
     Entry.where("prox >= ?", 20).find_each do |entry|
       if (start..finish).include?(entry.zone)
-        feed << {
-                lat: entry.latitude,
-                lng: entry.longitude,
-                prox: entry.prox
-                }
+        feed << entry.response_object
       end
     end
-    feed.to_json
+    feed.to_json #Is it the point at which .to_json is called that is the mystery element here
   end
 
   def self.random_images(this_many)
     images = []
     until images.count == this_many do
-      find_image = rand(66000)
+      find_image = rand(70000)
       record = Entry.find_by(id: find_image)
       if record
         url = record.url

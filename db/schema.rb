@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324162725) do
+ActiveRecord::Schema.define(version: 20140405043217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "entries", force: true do |t|
     t.string   "url"
@@ -24,10 +25,11 @@ ActiveRecord::Schema.define(version: 20140324162725) do
     t.string   "full_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "latitude",       precision: 10, scale: 7
-    t.decimal  "longitude",      precision: 10, scale: 7
+    t.decimal  "latitude",        precision: 10, scale: 7
+    t.decimal  "longitude",       precision: 10, scale: 7
     t.integer  "prox"
     t.integer  "zone"
+    t.hstore   "response_object"
   end
 
   add_index "entries", ["created_at"], name: "index_entries_on_created_at", using: :btree
