@@ -171,7 +171,7 @@ class Entry < ActiveRecord::Base
     finish_lng = lng+1
 
     Entry.where("latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?", start_lat, finish_lat, start_lng, finish_lng, 9, 36.months.ago).find_each do |entry|
-      feed << entry.response_object
+      feed << entry.response_object_hash
     end
     feed.sample(1500).to_json
   end
