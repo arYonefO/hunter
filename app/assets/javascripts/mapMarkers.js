@@ -4,8 +4,8 @@ d3ToMap.numRand = function(limit){
   return Math.floor(Math.random()*limit);
 }
 
-d3ToMap.maplng = function(){
-  return graffMap.map.getCenter().lng()
+d3ToMap.mapCoords = function(){
+  return Math.floor(graffMap.map.getCenter().lat()) + '/' + Math.floor(graffMap.map.getCenter().lng())
 }
 
 var entry = (function(){
@@ -93,7 +93,7 @@ d3ToMap.applyd3ToMap = function(data){
 }
 
 $(document).ready(function(){
-  var url = graffMap.data_url + d3ToMap.maplng()
+  var url = graffMap.data_url + d3ToMap.mapCoords()
   d3.json(url, function(data){
     d3ToMap.applyd3ToMap(data)
   })
