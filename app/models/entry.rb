@@ -147,12 +147,12 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def self.prepare_for_launch(lng_for_zone)
-    zoning = (lng_for_zone.to_i + 180) / 2
+  def self.prepare_for_launch(lat, lng)
+    zoning = lat + "+" + lng
     if feed = $redis.get("#{zoning}")
       return feed
     else
-      new_feed = Entry.generate_feed_JSON(zoning)
+      new_feed = Entry.generate_feed_JSON(lat.to_i, lng.to_i)
     end
 
     if new_feed
@@ -163,15 +163,17 @@ class Entry < ActiveRecord::Base
     new_feed
   end
 
-  def self.generate_feed_JSON(zoning)
+  def self.generate_feed_JSON(lat, lng)
     feed = []
-    start = zoning-1
-    finish = zoning+1
+    start_lat = lat-1
+    finish_lat = lat+1
+    start_lng = lng-1
+    finish_lng = lng+1
 
-    Entry.where("zone >= ? AND zone <= ? AND prox >= ? AND created_at >= ?", start, finish, 9, 12.months.ago).find_each do |entry|
+    Entry.where("latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?", start_lat, finish_lat, start_lng, finish_lng, 9, 36.months.ago).find_each do |entry|
       feed << entry.response_object
     end
-    feed.sample(2000).to_json
+    feed.sample(1500).to_json
   end
 
   def self.random_images(this_many)

@@ -57,7 +57,7 @@ $(document).ready(function(){
         map.setCenter(place.geometry.location);
         graffMap.map.setZoom(12);
       }
-      setTimeout(function(){ var url = graffMap.data_url + d3ToMap.maplng()
+      setTimeout(function(){ var url = graffMap.data_url + d3ToMap.mapCoords()
         d3.json(url, function(data){ d3ToMap.applyd3ToMap(data) })
       },100)
       $.ajax({
