@@ -168,12 +168,10 @@ class Entry < ActiveRecord::Base
     start = zoning-1
     finish = zoning+1
 
-    Entry.where("prox >= ?", 20).find_each do |entry|
-      if (start..finish).include?(entry.zone)
-        feed << entry.response_object
-      end
+    Entry.where("zone >= ? AND zone <= ? AND prox >= ? AND created_at >= ?", start, finish, 9, 12.months.ago).find_each do |entry|
+      feed << entry.response_object
     end
-    feed.to_json #Is it the point at which .to_json is called that is the mystery element here
+    feed.sample(2000).to_json
   end
 
   def self.random_images(this_many)
