@@ -133,7 +133,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.prepare_for_launch(lat, lng)
-    zoning = lat + "+" + lng
+    zoning = lat.to_s + "+" + lng.to_s
     if feed = $redis.get("#{zoning}")
       return feed
     else
@@ -154,8 +154,9 @@ class Entry < ActiveRecord::Base
     finish_lat = lat+1
     start_lng = lng-1.5
     finish_lng = lng+1.5
+    sql_query = "latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?"
 
-    Entry.where("latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?", start_lat, finish_lat, start_lng, finish_lng, 9, 36.months.ago).find_each do |entry|
+    Entry.where(sql_query, start_lat, finish_lat, start_lng, finish_lng, 9, 36.months.ago).find_each do |entry|
       feed << entry.response_object_hash
     end
     feed.sample(1500).to_json
