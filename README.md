@@ -13,11 +13,16 @@ To find graffiti/street art hot-spots in cities around the world
  - Animate title with D3
  - User instructions
  - Nav bar
- - Hstore the DB
+ - Prime cache
+ - Add legend to map
+ - Reorganise CSS to use SASS properly
+ - Reset autocomplete after use?
+ - Separate out data_ingesting from Entry model
+ - Avoid broken images
+
 
 ### Things to get back to:
  - randomise pretty line, for both instances
- - Optimise database queries and returns (index zone? Use sql intersection)
  - Build title with d3 (MAINTAIN!)
  - Sort out proper colour scheme
  - Consider caching the random_images returns...
@@ -65,6 +70,9 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - 2nd pass at adding some more mobile friendly stylings
  - Rescale the pretty lines according to page width (sorting out an event listener for window resize)
  - Capture search locations and save in DB for later reference
+ - Hstore the DB
+ - Optimise database queries and returns (index zone? Use sql intersection)
+
 
 
 
