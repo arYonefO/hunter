@@ -14,7 +14,6 @@ describe Entry do
   it { should respond_to(:latitude) }
   it { should respond_to(:prox) }
   it { should respond_to(:location) }
-  it { should respond_to(:zone) }
   it { should respond_to(:response_object) }
 
   it { should be_valid}
@@ -37,12 +36,6 @@ describe Entry do
     it "should return the correct format of coordinates" do
       this_entry = Entry.new(longitude: 34.4454, latitude: 53.2352)
       expect(this_entry.location).to eq [this_entry.latitude, this_entry.longitude]
-    end
-  end
-
-  describe ".generate_zone" do
-    describe "should return the correct zone for an entry" do
-      its(:zone) { should eq 29 }
     end
   end
 

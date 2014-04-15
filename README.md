@@ -16,10 +16,8 @@ To find graffiti/street art hot-spots in cities around the world
  - Prime cache
  - Add legend to map
  - Reorganise CSS to use SASS properly
- - Reset autocomplete after use?
  - Separate out data_ingesting from Entry model
  - Avoid broken images
-
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -29,6 +27,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Consider blurred graff texture as background
  - Need to change many of the instances of Entry.all into batch do. Don't need to have every Entry instantitated at the same time
  - Some sort of progress bar or indication of loading activity
+ - Add unicorn-worker-killer
 
 ### Done:
  - Add spork and factorygirl to facilitate testing
@@ -72,11 +71,6 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Capture search locations and save in DB for later reference
  - Hstore the DB
  - Optimise database queries and returns (index zone? Use sql intersection)
-
-
-
-
-
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)

@@ -24,11 +24,6 @@ namespace :db do
     Entry.serialize_the_entries
   end
 
-  desc "Update the proximity of entries"
-  task zone: :environment do
-    Entry.zone_the_entries
-  end
-
   desc "hoover the selected tag"
   task hoover_tag: :environment do
     Entry.hoover_tag('leicestergraffiti')
@@ -38,6 +33,8 @@ end
 namespace :cache do
   desc "Load the feed into the cache"
   task load: :environment do
-    Entry.prepare_for_launch
+    SearchTerm.all.each do |locale|
+      Entry.prepare_for_launch(locale.lat, locale.lng) if locale
+    end
   end
 end

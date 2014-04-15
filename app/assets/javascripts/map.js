@@ -63,7 +63,10 @@ $(document).ready(function(){
       $.ajax({
         type: "POST",
         url: "/search_term",
-        data: { 'search_term': place.formatted_address }
+        data: { 'search_term': place.formatted_address,
+                'lat': place.geometry.location.lat(),
+                'lng': place.geometry.location.lng()
+                }
       });
     })
   }())
