@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score, :generate_zone, :set_response_object
+  after_validation :proximity_score, :set_response_object
 
   def location
     [latitude.to_f, longitude.to_f]
@@ -32,21 +32,6 @@ class Entry < ActiveRecord::Base
   def proximity_score
     nearby_entries_count = Entry.near(self.location, 0.5).count
     self.update_attribute(:prox, nearby_entries_count)
-  end
-
-  def generate_zone
-    zoning = (self.longitude.to_i + 180) / 2
-    self.update_attribute(:zone, zoning)
-  end
-
-  def self.zone_the_entries
-    c=0
-    ordered_entries = Entry.all.sort_by(&:updated_at)
-    ordered_entries.each do |entry|
-      entry.generate_zone
-      c += 1
-      p "#{c} done" if c % 5000 == 0
-    end
   end
 
   def set_response_object
