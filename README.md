@@ -16,7 +16,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Prime cache
  - Add legend to map
  - Reorganise CSS to use SASS properly
- - Reset autocomplete after use?
  - Separate out data_ingesting from Entry model
  - Avoid broken images
 

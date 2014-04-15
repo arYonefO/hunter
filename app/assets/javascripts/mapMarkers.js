@@ -9,12 +9,12 @@ d3ToMap.mapCoords = function(){
 }
 
 var entry = (function(){
-  // var _link = function(j) { return j.url; };
-  var _lat = function(j) { return j.lat; };
-  var _lon = function(j) { return j.lng; };
-  var _prox = function(j) { return j.prox; };
-  // var _created = function(j) { return j.posted_at; };
-  // var _thumbnail = function(j) { return j.thumbnail_url; };
+  // var _link = function(entry) { return entry.url; };
+  var _lat = function(entry) { return entry.lat; };
+  var _lon = function(entry) { return entry.lng; };
+  var _prox = function(entry) { return entry.prox; };
+  // var _created = function(entry) { return entry.posted_at; };
+  // var _thumbnail = function(entry) { return entry.thumbnail_url; };
 
   var f = {};
 
