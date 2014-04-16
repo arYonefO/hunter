@@ -13,7 +13,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Animate title with D3
  - User instructions
  - Nav bar
- - Prime cache
  - Add legend to map
  - Reorganise CSS to use SASS properly
  - Separate out data_ingesting from Entry model
@@ -71,6 +70,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Capture search locations and save in DB for later reference
  - Hstore the DB
  - Optimise database queries and returns (index zone? Use sql intersection)
+ - Prime cache
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
