@@ -2,7 +2,6 @@ class SearchTerm < ActiveRecord::Base
   validates :search_term, presence: true, uniqueness: true
 
   def self.update_or_create_search_term(params)
-    p params[:lat]
     # find_or_create using search_term
     current_search_term = SearchTerm.find_by(search_term: params[:search_term])
     time = Time.now.to_s
