@@ -17,6 +17,9 @@ gem 'whenever'
 gem 'geocoder'
 gem 'database_cleaner'
 
+#analytics
+gem 'newrelic_rpm'
+
 # web server
 gem 'unicorn'
 gem 'unicorn-rails'
