@@ -15,4 +15,8 @@ class StaticController < ApplicationController
   def d3
   end
 
+  def leaflet
+    @images = Entry.random_images(2)
+  end
+
 end
