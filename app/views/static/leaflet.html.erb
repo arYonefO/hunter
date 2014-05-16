@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css">
+<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+<%= render 'header' %>
+
+<div class="pretty-line"></div>
+
+<div class="landing-graphics">
+  <div class="graff-holder first">
+    <%= render :partial => 'graff_image', :locals =>{:index => 0} %>
+  </div>
+  <div class="center-box"><%= render 'arrow' %></div>
+  <div class="graff-holder">
+    <%= render :partial => 'graff_image', :locals =>{:index => 1} %>
+  </div>
+</div>
+
+<div class="pretty-line"></div>
+
+<%= render 'map_leaflet' %>
+<%= render 'footer' %>
