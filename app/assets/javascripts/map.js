@@ -1,8 +1,8 @@
 var graffMap
 
-if ( $('#map').length ){
-  $(document).ready(function(){
 
+$(document).ready(function(){
+  if ( $('#map').length ){
     graffMap = {
       map: new google.maps.Map(d3.select("#map").node(), {
       zoom: 13,
@@ -70,9 +70,5 @@ if ( $('#map').length ){
         });
       })
     }())
-
-
-
-
-  }) // document.ready
-}
+  }
+}) // document.ready
