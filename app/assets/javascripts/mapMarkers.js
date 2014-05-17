@@ -28,73 +28,77 @@ var entry = (function(){
   return f;
 }());
 ////////////////////////////////////////////////////////
+if ( $('#map').length ){
 
-d3ToMap.applyd3ToMap = function(data){
-    console.log(data)
-    var overlay = new google.maps.OverlayView();
+  d3ToMap.applyd3ToMap = function(data){
+      console.log(data)
+      var overlay = new google.maps.OverlayView();
 
-    overlay.onAdd = function() {
+      overlay.onAdd = function() {
 
-      var layer = d3.select(this.getPanes().overlayMouseTarget)
-          .append("div")
-          .attr("class", "graffiti");
+        var layer = d3.select(this.getPanes().overlayMouseTarget)
+            .append("div")
+            .attr("class", "graffiti");
 
-      overlay.draw = function() {
-        var projection = this.getProjection(), padding = 10;
+        overlay.draw = function() {
+          var projection = this.getProjection(), padding = 10;
 
-        var marker = layer.selectAll("svg")
-                          .data(data)
-                          .each(transformMarker)
-                          .enter().append("svg:svg")
-                          .each(transformMarker)
-                          .on('mouseover', scatter);
+          var marker = layer.selectAll("svg")
+                            .data(data)
+                            .each(transformMarker)
+                            .enter().append("svg:svg")
+                            .each(transformMarker)
+                            .on('mouseover', scatter);
 
-        marker.append("svg:rect")
+          marker.append("svg:rect")
 
-              .attr("height", 6)
-              .attr("width", 6)
-              .attr('fill', function(d){
-                var colour = d3.scale.linear()
-                                     .domain([0, 100])
-                                     .range(["#0C5244", "#1ED6B1"]);
-                return colour(entry.prox(d)/6 + 10);
-              })
-              .attr("stroke", "#0f0f02")
-              .attr("stroke-width", 0.5)
+                .attr("height", 6)
+                .attr("width", 6)
+                .attr('fill', function(d){
+                  var colour = d3.scale.linear()
+                                       .domain([0, 100])
+                                       .range(["#0C5244", "#1ED6B1"]);
+                  return colour(entry.prox(d)/4 + 5);
+                })
+                .attr("stroke", "#0f0f02")
+                .attr("stroke-width", 0.5)
 
-              console.log(graffMap.map.zoom)
+                console.log(graffMap.map.zoom)
 
-        function transformMarker(d) {
-          d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
-          d = projection.fromLatLngToDivPixel(d);
-          return d3.select(this)
+          function transformMarker(d) {
+            d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
+            d = projection.fromLatLngToDivPixel(d);
+            return d3.select(this)
+                .style("left", (d.x) + "px")
+                .style("top", (d.y) + "px");
+          }
+
+          function scatter(d){
+            d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
+            d = projection.fromLatLngToDivPixel(d);
+            d3.select(this)
+              .transition()
+              .duration(2000)
+              .style("left", (d.x + (d3ToMap.numRand(301) - 150)) + "px")
+              .style("top", (d.y + (d3ToMap.numRand(301) - 150)) + "px")
+              .transition()
+              .delay(12000)
+              .duration(2000)
               .style("left", (d.x) + "px")
-              .style("top", (d.y) + "px");
-        }
+              .style("top", (d.y) + "px")
+          }
 
-        function scatter(d){
-          d = new google.maps.LatLng(entry.lat(d), entry.lon(d));
-          d = projection.fromLatLngToDivPixel(d);
-          d3.select(this)
-            .transition()
-            .duration(2000)
-            .style("left", (d.x + (d3ToMap.numRand(301) - 150)) + "px")
-            .style("top", (d.y + (d3ToMap.numRand(301) - 150)) + "px")
-            .transition()
-            .delay(12000)
-            .duration(2000)
-            .style("left", (d.x) + "px")
-            .style("top", (d.y) + "px")
-        }
-
+        };
       };
-    };
-  overlay.setMap(graffMap.map);
+    overlay.setMap(graffMap.map);
+  }
 }
 
-$(document).ready(function(){
-  var url = graffMap.data_url + d3ToMap.mapCoords()
-  d3.json(url, function(data){
-    d3ToMap.applyd3ToMap(data)
+if ( $('#map').length ){
+  $(document).ready(function(){
+    var url = graffMap.data_url + d3ToMap.mapCoords()
+    d3.json(url, function(data){
+      d3ToMap.applyd3ToMap(data)
+    })
   })
-})
+}
