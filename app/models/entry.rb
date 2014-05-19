@@ -43,7 +43,9 @@ class Entry < ActiveRecord::Base
     {
       lat: self.latitude,
       lng: self.longitude,
-      prox: self.prox
+      prox: self.prox,
+      url: self.url,
+      thumb: self.thumbnail_url
     }
   end
 
