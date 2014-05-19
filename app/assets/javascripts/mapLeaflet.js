@@ -5,7 +5,7 @@ var mapLeaflet,
 
 $(document).ready(function(){
   if ( $('#map-leaflet').length ){
-    mapLeaflet = L.map('map-leaflet', {minZoom:8}).setView([51.505, -0.09], 13);
+    mapLeaflet = L.map('map-leaflet', {minZoom:10}).setView([51.505, -0.09], 13);
 
     backgroundTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
       attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
@@ -56,8 +56,7 @@ $(document).ready(function(){
         var entry = data[i]
         latlngs.push(L.latLng(entry.lat, entry.lng))
       }
-      console.log('before creation of heatlayer')
-      return L.heatLayer(latlngs, {radius: 25});
+      return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:20});
     }
 
     // Request data for the test-case (London)
@@ -82,8 +81,6 @@ $(document).ready(function(){
     // Change what layer is displayed based on zoom
     // Which generates an extra 250 http requests even with Clustering
     customLeaflet.onZoomed = function(){
-      console.log(customLeaflet.heatmap)
-      console.log(customLeaflet.thumbnailMarkers)
       if(mapLeaflet.getZoom() >= 17) {
         mapLeaflet.removeLayer(customLeaflet.heatmap);
         mapLeaflet.addLayer(customLeaflet.thumbnailMarkers);
