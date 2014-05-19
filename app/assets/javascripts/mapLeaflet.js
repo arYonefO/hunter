@@ -23,12 +23,7 @@ $(document).ready(function(){
             }
     })
 
-    var exampleThumbURL = "http://origincache-prn.fbcdn.net/10358282_1435179943401252_572496191_s.jpg",
-    testThumbnailIcon = new customLeaflet.ThumbnailIcon({iconUrl: exampleThumbURL})
-
-    L.marker([51.505, -0.089], {icon: testThumbnailIcon}).addTo(mapLeaflet);
-
-    // Boring regular markers
+    // Function for creating icon based layers
 
     customLeaflet.createMarkersLayer = function(data, opts){
       var convertedPoints = [],
@@ -52,6 +47,19 @@ $(document).ready(function(){
       }
     }
 
+    // Function for creating heatmap based layers
+
+    customLeaflet.createHeatmapLayer = function(data){
+      var latlngs = []
+
+      for (var i = 0; i < data.length; i++){
+        var entry = data[i]
+        latlngs.push(L.latLng(entry.lat, entry.lng))
+      }
+      console.log('before creation of heatlayer')
+      return L.heatLayer(latlngs, {radius: 25});
+    }
+
     // Request data for the test-case (London)
 
     dataRequest = $.ajax({
@@ -59,8 +67,8 @@ $(document).ready(function(){
                   });
 
     dataRequest.done(function(data, status, responseObject){
-      customLeaflet.plainMarkers = customLeaflet.createMarkersLayer(data, {'thumbnail': false})
-      customLeaflet.plainMarkers.addTo(mapLeaflet)
+      customLeaflet.heatmap = customLeaflet.createHeatmapLayer(data)
+      customLeaflet.heatmap.addTo(mapLeaflet)
       customLeaflet.thumbnailMarkers = customLeaflet.createMarkersLayer(data, {'thumbnail': true})
 
       mapLeaflet.on('zoomend', customLeaflet.onZoomed)
@@ -72,16 +80,16 @@ $(document).ready(function(){
     })
 
     // Change what layer is displayed based on zoom
-    // Which generates an extra 1500 http requests on display :( Clustering?
+    // Which generates an extra 250 http requests even with Clustering
     customLeaflet.onZoomed = function(){
-      console.log(customLeaflet.plainMarkers)
+      console.log(customLeaflet.heatmap)
       console.log(customLeaflet.thumbnailMarkers)
       if(mapLeaflet.getZoom() >= 17) {
-        mapLeaflet.removeLayer(customLeaflet.plainMarkers);
+        mapLeaflet.removeLayer(customLeaflet.heatmap);
         mapLeaflet.addLayer(customLeaflet.thumbnailMarkers);
       } else {
         mapLeaflet.removeLayer(customLeaflet.thumbnailMarkers);
-        mapLeaflet.addLayer(customLeaflet.plainMarkers);
+        mapLeaflet.addLayer(customLeaflet.heatmap);
       }
     }
   }

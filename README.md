@@ -85,6 +85,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
   - http://1amsf.com/mobile/about-mobile/
 
 ### Leaflet version
-  -Create separate page for leaflet version
+  -Create separate page for leaflet version **Done
   -Implement location detection
-  -Implement display of data
+  -Implement display of data **Done
+  -onClick event (look into marker behaviour and see what can be done there)
+  -Heatmap for overall layer
