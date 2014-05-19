@@ -32,19 +32,24 @@ $(document).ready(function(){
 
     customLeaflet.createMarkersLayer = function(data, opts){
       var convertedPoints = [],
-      marker
+      marker,
+      icon,
+      markerCluster = new L.MarkerClusterGroup()
       for (var i = 0; i < data.length; i++){
         var entry = data[i];
         if (opts['thumbnail'] === true){
-          var thumbnailIcon = new customLeaflet.ThumbnailIcon({iconUrl: entry.thumb})
-          marker = new L.marker([entry.lat, entry.lng], {icon: thumbnailIcon})
+          icon = new customLeaflet.ThumbnailIcon({iconUrl: entry.thumb})
         } else {
-          marker = new L.marker([entry.lat, entry.lng], {icon: customLeaflet.cssDivIcon})
+          icon = customLeaflet.cssDivIcon
         }
-
+        marker = new L.marker([entry.lat, entry.lng], {icon: icon})
         convertedPoints.push(marker)
       }
-      return L.layerGroup(convertedPoints)
+      if (opts['thumbnail'] === true){
+        return markerCluster.addLayers(convertedPoints)
+      } else {
+        return L.layerGroup(convertedPoints)
+      }
     }
 
     // Request data for the test-case (London)
@@ -71,7 +76,7 @@ $(document).ready(function(){
     customLeaflet.onZoomed = function(){
       console.log(customLeaflet.plainMarkers)
       console.log(customLeaflet.thumbnailMarkers)
-      if(mapLeaflet.getZoom() >= 18) {
+      if(mapLeaflet.getZoom() >= 17) {
         mapLeaflet.removeLayer(customLeaflet.plainMarkers);
         mapLeaflet.addLayer(customLeaflet.thumbnailMarkers);
       } else {
