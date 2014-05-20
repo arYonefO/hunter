@@ -85,8 +85,11 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
   - http://1amsf.com/mobile/about-mobile/
 
 ### Leaflet version
-  -Create separate page for leaflet version **Done
   -Implement location detection
-  -Implement display of data **Done
   -onClick event (look into marker behaviour and see what can be done there)
-  -Heatmap for overall layer
+  -Replicate autocomplete location search using Redis, a city dataset and JS
+  -Pick 20 cities to be the random start cities for the app
+
+  -Create separate page for leaflet version **Done
+  -Implement display of data **Done
+  -Heatmap for overall layer **Done

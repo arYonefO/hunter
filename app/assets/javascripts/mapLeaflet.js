@@ -56,7 +56,7 @@ $(document).ready(function(){
         var entry = data[i]
         latlngs.push(L.latLng(entry.lat, entry.lng))
       }
-      return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:20});
+      return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:40});
     }
 
     // Request data for the test-case (London)
