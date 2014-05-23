@@ -35,7 +35,7 @@ $(document).ready(function(){
                     "elementType": "labels",
                     "stylers": [ { "visibility": "off" } ] }
                 ],
-        data_url: "http://localhost:3002/feed/"
+        data_url: "http://www.graffi.so/feed/"
     }
 
     var mapSetUp = (function(){
