@@ -24,7 +24,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Sort out proper colour scheme
  - Consider caching the random_images returns...
  - Consider blurred graff texture as background
- - Need to change many of the instances of Entry.all into batch do. Don't need to have every Entry instantitated at the same time
  - Some sort of progress bar or indication of loading activity
  - Add unicorn-worker-killer
 
@@ -84,3 +83,13 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
   - http://www.streetart-community.com/
   - http://geostreetart.com/
   - http://1amsf.com/mobile/about-mobile/
+
+### Leaflet version
+  -Implement location detection
+  -onClick event (look into marker behaviour and see what can be done there)
+  -Replicate autocomplete location search using Redis, a city dataset and JS
+  -Pick 20 cities to be the random start cities for the app
+
+  -Create separate page for leaflet version **Done
+  -Implement display of data **Done
+  -Heatmap for overall layer **Done

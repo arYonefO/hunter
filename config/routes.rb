@@ -7,4 +7,5 @@ LecheAsada::Application.routes.draw do
 
   # Playpen
   match '/d3', to: 'static#d3', via: 'get'
+  match '/leaflet', to: 'static#leaflet', via: 'get'
 end

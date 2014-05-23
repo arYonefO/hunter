@@ -43,7 +43,9 @@ class Entry < ActiveRecord::Base
     {
       lat: self.latitude,
       lng: self.longitude,
-      prox: self.prox
+      prox: self.prox,
+      url: self.url,
+      thumb: self.thumbnail_url
     }
   end
 
@@ -165,7 +167,7 @@ class Entry < ActiveRecord::Base
   def self.random_images(this_many)
     images = []
     until images.count == this_many do
-      find_image = rand(70000)
+      find_image = rand(80000)
       record = Entry.find_by(id: find_image)
       if record
         url = record.url
