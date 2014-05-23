@@ -1,7 +1,6 @@
 var mapLeaflet,
     backgroundTiles,
-    customLeaflet = {},
-    dataRequest
+    customLeaflet = {}
 
 $(document).ready(function(){
   if ( $('#map-leaflet').length ){
@@ -61,22 +60,32 @@ $(document).ready(function(){
 
     // Request data for the test-case (London)
 
-    dataRequest = $.ajax({
-                    url: "/feed/51/-1",
+    customLeaflet.dataRequest = function(latlng){
+      var lat = latlng[0],
+          lng = latlng[1],
+          dataRequest = $.ajax({
+                    url: "/feed/" + lat +"/" + lng,
                   });
+      console.log("Inside the dataRequest function: " +lat)
+      console.log(dataRequest)
 
-    dataRequest.done(function(data, status, responseObject){
-      customLeaflet.heatmap = customLeaflet.createHeatmapLayer(data)
-      customLeaflet.heatmap.addTo(mapLeaflet)
-      customLeaflet.thumbnailMarkers = customLeaflet.createMarkersLayer(data, {'thumbnail': true})
+      dataRequest.done(function(data, status, responseObject){
+        if (mapLeaflet.hasLayer(customLeaflet.heatmap)){
+          mapLeaflet.removeLayer(customLeaflet.heatmap)
+        }
+        customLeaflet.heatmap = customLeaflet.createHeatmapLayer(data)
+        customLeaflet.heatmap.addTo(mapLeaflet)
+        customLeaflet.thumbnailMarkers = customLeaflet.createMarkersLayer(data, {'thumbnail': true})
 
-      mapLeaflet.on('zoomend', customLeaflet.onZoomed)
+        mapLeaflet.on('zoomend', customLeaflet.onZoomed)
 
-    })
+      })
 
-    dataRequest.fail(function(data, status, responseObject){
-      console.log(arguments)
-    })
+      dataRequest.fail(function(data, status, responseObject){
+        console.log(arguments)
+      })
+
+    }
 
     // Change what layer is displayed based on zoom
     // Which generates an extra 250 http requests even with Clustering
@@ -89,5 +98,7 @@ $(document).ready(function(){
         mapLeaflet.addLayer(customLeaflet.heatmap);
       }
     }
+
+    customLeaflet.dataRequest([51, -1])
   }
 })

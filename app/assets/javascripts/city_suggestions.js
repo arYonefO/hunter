@@ -3972,14 +3972,31 @@ $(document).ready(function(){
     $('#autocomplete').autocomplete({
       lookup: cities,
       onSelect: function (suggestion) {
-        var lat = suggestion.data.lat,
-            lng = suggestion.data.lng
-            console.log(lat)
-        mapLeaflet.setView([lat, lng])
       // center map on new coords
-      // order data using coords
-      // display new data on map
+        var lat = suggestion.data.lat,
+            lng = suggestion.data.lng;
+
+        function float2int (value) {
+         return value | 0;
+        }
+
+        var roundedLat = float2int(lat),
+            roundedLng = float2int(lng);
+
+        mapLeaflet.setView([lat, lng], 13);
+      // order data using coords and display
+        console.log("Inside the autocomplete callback: " + roundedLat);
+        customLeaflet.dataRequest([roundedLat, roundedLng]);
+      // Send searchterm ajax call to server
+        $.ajax({
+          type: "POST",
+          url: "/search_term",
+          data: { 'search_term': suggestion.value,
+                  'lat': lat,
+                  'lng': lng
+                }
+        });
       }
     });
   }
-})
+});
