@@ -3911,6 +3911,12 @@ var cities = [
       "lng": 172.617
     }
   },
+    {"value": "Oakland",
+    "data": {
+      "lat": 37.804,
+      "lng": -122.271
+    }
+  },
     {"value": "South Tarawa",
     "data": {
       "lat": 1.317,
@@ -3976,16 +3982,11 @@ $(document).ready(function(){
         var lat = suggestion.data.lat,
             lng = suggestion.data.lng;
 
-        function float2int (value) {
-         return value | 0;
-        }
-
-        var roundedLat = float2int(lat),
-            roundedLng = float2int(lng);
+        var roundedLat = customLeaflet.float2int(lat),
+            roundedLng = customLeaflet.float2int(lng);
 
         mapLeaflet.setView([lat, lng], 13);
       // order data using coords and display
-        console.log("Inside the autocomplete callback: " + roundedLat);
         customLeaflet.dataRequest([roundedLat, roundedLng]);
       // Send searchterm ajax call to server
         $.ajax({
