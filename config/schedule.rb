@@ -2,9 +2,9 @@ every 15.minute do
    runner "Entry.chase_tag('rsa_graffiti')", :environment => 'development'
 end
 
-every 19.minute do
-   runner "Entry.chase_tag('preciousgraffiti')", :environment => 'development'
-end
+# every 19.minute do
+#    runner "Entry.chase_tag('preciousgraffiti')", :environment => 'development'
+# end
 
 every 32.minutes do
   runner "Entry.chase_tag('nexus_streetart')", :environment => 'development'
@@ -15,11 +15,11 @@ every 43.minutes do
 end
 
 every 47.minutes do
-  runner "Entry.chase_tag('melbournegraffiti')", :environment => 'development'
+  runner "Entry.chase_tag('gatekunst')", :environment => 'development'
 end
 
 every 57.minutes do
-  # runner "Entry.hoover_tag('arteurbano')", :environment => 'development'
+  runner "Entry.hoover_tag('arteurbano')", :environment => 'development'
 end
 
 every 2.hours do
