@@ -33,7 +33,11 @@ var mapLeaflet,
 $(document).ready(function(){
   if ( $('#map-leaflet').length ){
     customLeaflet.pickStartCity()
-    mapLeaflet = L.map('map-leaflet', {minZoom:10}).setView(customLeaflet.starter, 13);
+    mapLeaflet = L.map('map-leaflet', {minZoom:10})
+
+    //Sets default map location
+
+    mapLeaflet.setView(customLeaflet.starter, 13);
 
     backgroundTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
       attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
@@ -87,7 +91,7 @@ $(document).ready(function(){
       return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:40});
     }
 
-    // Request data for the test-case (London)
+    // Request data for all cases
 
     customLeaflet.dataRequest = function(latlng){
       var lat = latlng[0],
@@ -126,12 +130,32 @@ $(document).ready(function(){
       }
     }
 
+    customLeaflet.onLocationFound = function(data){
+      var deviceLatLng = customLeaflet.roundedLatLng([data.latlng.lat, data.latlng.lng])
+      customLeaflet.dataRequest(deviceLatLng)
+      mapLeaflet.setView(data.latlng)
+    }
+
+    customLeaflet.deviceLocation = function() {
+      mapLeaflet.locate()
+      mapLeaflet.on('locationfound', customLeaflet.onLocationFound)
+    }
+
     customLeaflet.float2int = function(value) {
          return value | 0;
     }
 
-    var roundedLat = customLeaflet.float2int(customLeaflet.starter[0]),
-        roundedLng = customLeaflet.float2int(customLeaflet.starter[1]);
-    customLeaflet.dataRequest([roundedLat, roundedLng])
+    customLeaflet.roundedLatLng = function(latlng){
+    var roundedLat = customLeaflet.float2int(latlng[0]),
+        roundedLng = customLeaflet.float2int(latlng[1]);
+    return [roundedLat, roundedLng]
+    }
+
+    // populate initial map with data
+    var startLatLng = customLeaflet.roundedLatLng(customLeaflet.starter)
+    customLeaflet.dataRequest(startLatLng)
+
+    // Use device location
+    $('#device-location').on('click', customLeaflet.deviceLocation)
   }
 })
