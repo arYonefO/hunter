@@ -19,7 +19,7 @@ every 47.minutes do
 end
 
 every 57.minutes do
-  runner "Entry.hoover_tag('arteurbano')", :environment => 'development'
+  runner "Entry.chase_tag('arteurbano')", :environment => 'development'
 end
 
 every 2.hours do
