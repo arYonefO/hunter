@@ -55,11 +55,41 @@ $(document).ready(function(){
             }
     })
 
+    customLeaflet.ThumbnailIconExtended = L.Icon.extend({
+    options: {
+              iconSize:     [220, 220],
+              iconAnchor:   [5, 15]
+            }
+    })
+
     // On Click event handler function for markers
     customLeaflet.presentMarker = function(e){
-      alert(e.latlng);
-      console.log(e);
+      console.log(e.target.options);
+      // console.log(e.target.options.zIndexOffset)
+      if (e.target.options.zIndexOffset === 0)
+      {
+        var extendedIcon = new customLeaflet.ThumbnailIconExtended({iconUrl: e.target.options.thumb})
+        e.target.setIcon(extendedIcon)
+        e.target.setZIndexOffset(1000000 + customLeaflet.zIndexOffsetIncrement())
+        e.target.closePopup() // This is confusing. closePopup() is opening the popup
+      } else {
+        var regularIcon = new customLeaflet.ThumbnailIcon({iconUrl: e.target.options.thumb})
+        e.target.setIcon(regularIcon)
+        e.target.setZIndexOffset(0)
+        e.target.openPopup() // This is confusing. openPopup() is closing the popup
+      }
     }
+
+
+    // Ensure the last clicked image pops up highest
+
+    customLeaflet.currentOffset = 0
+
+    customLeaflet.zIndexOffsetIncrement = function(){
+      customLeaflet.currentOffset ++;
+      return customLeaflet.currentOffset
+    }
+
 
     // Function for creating icon based layers
 
@@ -75,8 +105,17 @@ $(document).ready(function(){
         } else {
           icon = customLeaflet.cssDivIcon
         }
-        marker = new L.marker([entry.lat, entry.lng], {icon: icon, alt: "Image not available :("})
+        marker = new L.marker(
+                            [entry.lat, entry.lng],
+                            {
+                              icon: icon,
+                              alt: "Image not available :(",
+                              thumb: entry.thumb
+                            }
+                            )
         marker.on('click', customLeaflet.presentMarker);
+        var linkToInstagram = "<a href='" + entry.url + "' target='_blank'>See this on Instagram</a>"
+        marker.bindPopup(linkToInstagram)
         convertedPoints.push(marker)
       }
       if (opts['thumbnail'] === true){
