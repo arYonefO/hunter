@@ -136,9 +136,15 @@ $(document).ready(function(){
       mapLeaflet.setView(data.latlng)
     }
 
+    customLeaflet.onLocationError = function(e){
+      alert(e.message)
+      console.log("Well if you don't want to hand over your location, that's fine")
+    }
+
     customLeaflet.deviceLocation = function() {
       mapLeaflet.locate()
       mapLeaflet.on('locationfound', customLeaflet.onLocationFound)
+      mapLeaflet.on('locationerror', customLeaflet.onLocationError)
     }
 
     customLeaflet.float2int = function(value) {
