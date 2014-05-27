@@ -55,6 +55,12 @@ $(document).ready(function(){
             }
     })
 
+    // On Click event handler function for markers
+    customLeaflet.presentMarker = function(e){
+      alert(e.latlng);
+      console.log(e);
+    }
+
     // Function for creating icon based layers
 
     customLeaflet.createMarkersLayer = function(data, opts){
@@ -69,7 +75,8 @@ $(document).ready(function(){
         } else {
           icon = customLeaflet.cssDivIcon
         }
-        marker = new L.marker([entry.lat, entry.lng], {icon: icon})
+        marker = new L.marker([entry.lat, entry.lng], {icon: icon, alt: "Image not available :("})
+        marker.on('click', customLeaflet.presentMarker);
         convertedPoints.push(marker)
       }
       if (opts['thumbnail'] === true){
