@@ -18,7 +18,13 @@ var mapLeaflet,
       [41.383, 2.183],
       [43.65, -79.383],
       [-22.9, -43.233],
-      [37.804, -122.271]
+      [37.804, -122.271],
+      [19.4, -99.117],
+      [51.45, -2.583],
+      [4.598, -74.076],
+      [38.7, -9.183],
+      [-34.6, -58.367],
+      [-33.45, -70.667]
       ],
       city_index = d3ToMap.numRand(cities.length);
       customLeaflet.starter = cities[city_index]
@@ -27,7 +33,11 @@ var mapLeaflet,
 $(document).ready(function(){
   if ( $('#map-leaflet').length ){
     customLeaflet.pickStartCity()
-    mapLeaflet = L.map('map-leaflet', {minZoom:10}).setView(customLeaflet.starter, 13);
+    mapLeaflet = L.map('map-leaflet', {minZoom:10})
+
+    //Sets default map location
+
+    mapLeaflet.setView(customLeaflet.starter, 13);
 
     backgroundTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
       attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
@@ -45,6 +55,42 @@ $(document).ready(function(){
             }
     })
 
+    customLeaflet.ThumbnailIconExtended = L.Icon.extend({
+    options: {
+              iconSize:     [220, 220],
+              iconAnchor:   [5, 15]
+            }
+    })
+
+    // On Click event handler function for markers
+    customLeaflet.presentMarker = function(e){
+      console.log(e.target.options);
+      // console.log(e.target.options.zIndexOffset)
+      if (e.target.options.zIndexOffset === 0)
+      {
+        var extendedIcon = new customLeaflet.ThumbnailIconExtended({iconUrl: e.target.options.thumb})
+        e.target.setIcon(extendedIcon)
+        e.target.setZIndexOffset(1000000 + customLeaflet.zIndexOffsetIncrement())
+        e.target.closePopup() // This is confusing. closePopup() is opening the popup
+      } else {
+        var regularIcon = new customLeaflet.ThumbnailIcon({iconUrl: e.target.options.thumb})
+        e.target.setIcon(regularIcon)
+        e.target.setZIndexOffset(0)
+        e.target.openPopup() // This is confusing. openPopup() is closing the popup
+      }
+    }
+
+
+    // Ensure the last clicked image pops up highest
+
+    customLeaflet.currentOffset = 0
+
+    customLeaflet.zIndexOffsetIncrement = function(){
+      customLeaflet.currentOffset ++;
+      return customLeaflet.currentOffset
+    }
+
+
     // Function for creating icon based layers
 
     customLeaflet.createMarkersLayer = function(data, opts){
@@ -59,7 +105,17 @@ $(document).ready(function(){
         } else {
           icon = customLeaflet.cssDivIcon
         }
-        marker = new L.marker([entry.lat, entry.lng], {icon: icon})
+        marker = new L.marker(
+                            [entry.lat, entry.lng],
+                            {
+                              icon: icon,
+                              alt: "Image not available :(",
+                              thumb: entry.thumb
+                            }
+                            )
+        marker.on('click', customLeaflet.presentMarker);
+        var linkToInstagram = "<a href='" + entry.url + "' target='_blank'>See this on Instagram</a>"
+        marker.bindPopup(linkToInstagram)
         convertedPoints.push(marker)
       }
       if (opts['thumbnail'] === true){
@@ -81,7 +137,7 @@ $(document).ready(function(){
       return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:40});
     }
 
-    // Request data for the test-case (London)
+    // Request data for all cases
 
     customLeaflet.dataRequest = function(latlng){
       var lat = latlng[0],
@@ -120,12 +176,38 @@ $(document).ready(function(){
       }
     }
 
+    customLeaflet.onLocationFound = function(data){
+      var deviceLatLng = customLeaflet.roundedLatLng([data.latlng.lat, data.latlng.lng])
+      customLeaflet.dataRequest(deviceLatLng)
+      mapLeaflet.setView(data.latlng)
+    }
+
+    customLeaflet.onLocationError = function(e){
+      alert(e.message)
+      console.log("Well if you don't want to hand over your location, that's fine")
+    }
+
+    customLeaflet.deviceLocation = function() {
+      mapLeaflet.locate()
+      mapLeaflet.on('locationfound', customLeaflet.onLocationFound)
+      mapLeaflet.on('locationerror', customLeaflet.onLocationError)
+    }
+
     customLeaflet.float2int = function(value) {
          return value | 0;
     }
 
-    var roundedLat = customLeaflet.float2int(customLeaflet.starter[0]),
-        roundedLng = customLeaflet.float2int(customLeaflet.starter[1]);
-    customLeaflet.dataRequest([roundedLat, roundedLng])
+    customLeaflet.roundedLatLng = function(latlng){
+    var roundedLat = customLeaflet.float2int(latlng[0]),
+        roundedLng = customLeaflet.float2int(latlng[1]);
+    return [roundedLat, roundedLng]
+    }
+
+    // populate initial map with data
+    var startLatLng = customLeaflet.roundedLatLng(customLeaflet.starter)
+    customLeaflet.dataRequest(startLatLng)
+
+    // Use device location
+    $('#device-location').on('click', customLeaflet.deviceLocation)
   }
 })

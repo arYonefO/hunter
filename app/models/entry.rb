@@ -123,6 +123,7 @@ class Entry < ActiveRecord::Base
 
   def self.hoover_tag(tag)
     query_tag = Tag.where(:label => tag).first_or_create
+    tag = URI.escape(tag)
     if query_tag.next_max_tag_id.nil?
       hoover_ingest(Instagram.tag_recent_media(tag), query_tag)
     end

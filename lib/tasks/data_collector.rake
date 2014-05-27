@@ -11,7 +11,7 @@ namespace :db do
 
   desc "hoover the selected user"
   task hoover_user: :environment do
-    Entry.clean_them_out('ivo_sp')
+    Entry.clean_them_out('capetownstreetart')
   end
 
   desc "Update the proximity of entries"
@@ -26,7 +26,7 @@ namespace :db do
 
   desc "hoover the selected tag"
   task hoover_tag: :environment do
-    Entry.hoover_tag('leicestergraffiti')
+    Entry.hoover_tag('canberragraff')
   end
 end
 
@@ -38,3 +38,11 @@ namespace :cache do
     end
   end
 end
+
+['etamcru', 'sztukaulicy', 'etamcrew', 'saineretam', 'katowicestreetart',
+  'streetartinpoland', 'streetart_bakkem', 'gatekunst', 'capetownstreetart',
+  'стритарт', 'istanbulstreetart', 'streetartbogota','bogotastreetart',
+  'bristolstreetart', 'santiagostreetart', 'buenosairesstreetart',
+  'streetartbuenosaires', 'streetartlisbon', 'lisbonstreetart', 'abyss607',
+  'canberragraff'
+]

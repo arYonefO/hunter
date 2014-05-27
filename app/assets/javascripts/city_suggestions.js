@@ -2519,6 +2519,18 @@ var cities = [
       "lng": 43.133
     }
   },
+    {"value": "Bristol",
+    "data": {
+      "lat": 51.45,
+      "lng": -2.583
+    }
+  },
+    {"value": "Bethlehem",
+    "data": {
+      "lat": 31.703,
+      "lng": 35.196
+    }
+  },
     {"value": "Moroni",
     "data": {
       "lat": -11.75,
@@ -3915,6 +3927,18 @@ var cities = [
     "data": {
       "lat": 37.804,
       "lng": -122.271
+    }
+  },
+    {"value": "Lodz",
+    "data": {
+      "lat": 51.783,
+      "lng": 19.467
+    }
+  },
+    {"value": "Katowice",
+    "data": {
+      "lat": 50.267,
+      "lng": 19.017
     }
   },
     {"value": "South Tarawa",
