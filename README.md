@@ -13,10 +13,8 @@ To find graffiti/street art hot-spots in cities around the world
  - Animate title with D3
  - User instructions
  - Nav bar
- - Add legend to map
- - Reorganise CSS to use SASS properly
  - Separate out data_ingesting from Entry model
- - Avoid broken images
+ - Avoid broken images/Nuke broken images
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -70,6 +68,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Hstore the DB
  - Optimise database queries and returns (index zone? Use sql intersection)
  - Prime cache
+- Add legend to map
+ - Reorganise CSS to use SASS properly
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
@@ -85,15 +85,12 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
   - http://1amsf.com/mobile/about-mobile/
 
 ### Leaflet version
-  -Legend or control?
-  -Demunt styles
-
-  Done:
-  -Create separate page for leaflet version
-  -Implement display of data
-  -Heatmap for overall layer
-  -Pick 20 cities to be the random start cities for the app
-  -Replicate autocomplete location search using Redis, a city dataset and JS
-  -Implement location detection
-  -onClick event (look into marker behaviour and see what can be done there)
-
+  - Create separate page for leaflet version
+  - Implement display of data
+  - Heatmap for overall layer
+  - Pick 20 cities to be the random start cities for the app
+  - Replicate autocomplete location search using Redis, a city dataset and JS
+  - Implement location detection
+  - onClick event (look into marker behaviour and see what can be done there)
+  - Legend or control?
+  - Demunt styles
