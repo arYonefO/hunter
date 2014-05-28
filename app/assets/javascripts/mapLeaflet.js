@@ -64,14 +64,11 @@ $(document).ready(function(){
 
     // On Click event handler function for markers
     customLeaflet.presentMarker = function(e){
-      console.log(e.target.options);
-      console.log(e.target.options.zIndexOffset)
       if (e.target.options.zIndexOffset === 0 || e.target.options.zIndexOffset === 1000000)
       {
         var extendedIcon = new customLeaflet.ThumbnailIconExtended({iconUrl: e.target.options.thumb})
         e.target.setIcon(extendedIcon)
         e.target.setZIndexOffset(9000000 + customLeaflet.zIndexOffsetIncrement())
-        console.log(e.target.options.zIndexOffset)
         e.target.closePopup() // This is confusing. closePopup() is opening the popup
       } else {
         var regularIcon = new customLeaflet.ThumbnailIcon({iconUrl: e.target.options.thumb})

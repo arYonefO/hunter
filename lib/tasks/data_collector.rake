@@ -26,7 +26,7 @@ namespace :db do
 
   desc "hoover the selected tag"
   task hoover_tag: :environment do
-    Entry.hoover_tag('canberragraff')
+    Entry.hoover_tag("ストリートアート")
   end
 end
 
@@ -44,5 +44,5 @@ end
   'стритарт', 'istanbulstreetart', 'streetartbogota','bogotastreetart',
   'bristolstreetart', 'santiagostreetart', 'buenosairesstreetart',
   'streetartbuenosaires', 'streetartlisbon', 'lisbonstreetart', 'abyss607',
-  'canberragraff'
+  'canberragraff',"ストリートアート"
 ]

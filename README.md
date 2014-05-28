@@ -15,6 +15,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Nav bar
  - Separate out data_ingesting from Entry model
  - Avoid broken images/Nuke broken images
+ - Style popup boxes, deh ugly
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -84,7 +85,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
   - http://geostreetart.com/
   - http://1amsf.com/mobile/about-mobile/
 
-### Leaflet version
+### Leaflet version done list
   - Create separate page for leaflet version
   - Implement display of data
   - Heatmap for overall layer
