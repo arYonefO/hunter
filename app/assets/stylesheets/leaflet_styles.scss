@@ -5,7 +5,7 @@
 .autocomplete-selected { background: #f0f0f0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
 
-/* Search field */
+/* Search field, name changed to avoid name-space issues with old google maps stylings */
 #searching { display: block; width: 100%; text-align: center; margin: 0px auto; padding: 15px; }
 
 #searching form {
@@ -64,6 +64,8 @@
   background: #1b435e;
 }
 
+/* Nicked some stylings from leaflet tutorial for choropleth maps */
+
 .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -74,7 +76,7 @@
 }
 .info h4 {
     margin: 0 0 5px;
-    color: #4A97A6;
+    color: #7dce9f;
 }
 
 .legend {
@@ -88,6 +90,8 @@
     margin-right: 8px;
     opacity: 0.7;
 }
+
+/* Added borders to all marker images */
 
 .leaflet-marker-pane img{
   border-color: #fff;
