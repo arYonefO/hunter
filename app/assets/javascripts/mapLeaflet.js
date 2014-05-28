@@ -39,7 +39,7 @@ $(document).ready(function(){
 
     mapLeaflet.setView(customLeaflet.starter, 13);
 
-    backgroundTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png', {
+    backgroundTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/tokugawa.iblnm3f7/{z}/{x}/{y}.png', {
       attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
     }) // Mapbox map tiles
 
@@ -65,12 +65,13 @@ $(document).ready(function(){
     // On Click event handler function for markers
     customLeaflet.presentMarker = function(e){
       console.log(e.target.options);
-      // console.log(e.target.options.zIndexOffset)
-      if (e.target.options.zIndexOffset === 0)
+      console.log(e.target.options.zIndexOffset)
+      if (e.target.options.zIndexOffset === 0 || e.target.options.zIndexOffset === 1000000)
       {
         var extendedIcon = new customLeaflet.ThumbnailIconExtended({iconUrl: e.target.options.thumb})
         e.target.setIcon(extendedIcon)
-        e.target.setZIndexOffset(1000000 + customLeaflet.zIndexOffsetIncrement())
+        e.target.setZIndexOffset(9000000 + customLeaflet.zIndexOffsetIncrement())
+        console.log(e.target.options.zIndexOffset)
         e.target.closePopup() // This is confusing. closePopup() is opening the popup
       } else {
         var regularIcon = new customLeaflet.ThumbnailIcon({iconUrl: e.target.options.thumb})
@@ -97,7 +98,7 @@ $(document).ready(function(){
       var convertedPoints = [],
       marker,
       icon,
-      markerCluster = new L.MarkerClusterGroup()
+      markerCluster = new L.MarkerClusterGroup({spiderfyDistanceMultiplier: 1.6})
       for (var i = 0; i < data.length; i++){
         var entry = data[i];
         if (opts['thumbnail'] === true){
@@ -134,7 +135,7 @@ $(document).ready(function(){
         var entry = data[i]
         latlngs.push(L.latLng(entry.lat, entry.lng))
       }
-      return L.heatLayer(latlngs, {gradient: {0.4:"yellow", 0.8: "black", 1: "#1ED6B1"}, blur:40});
+      return L.heatLayer(latlngs, {gradient: {0.4:"orange", 0.7: "#3f3d23", 1: "#9b6620"}, blur:40});
     }
 
     // Request data for all cases
@@ -202,6 +203,22 @@ $(document).ready(function(){
         roundedLng = customLeaflet.float2int(latlng[1]);
     return [roundedLat, roundedLng]
     }
+
+    // Adds info pane to map
+    var info = L.control();
+
+    info.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    info.update = function() {
+        this._div.innerHTML = '<h4>Graffi.so: Global Street Art Finder</h4>' +
+            '<b>' + 'Zoom in to explore';
+    };
+
+    info.addTo(mapLeaflet);
 
     // populate initial map with data
     var startLatLng = customLeaflet.roundedLatLng(customLeaflet.starter)
