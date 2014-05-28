@@ -159,10 +159,10 @@ class Entry < ActiveRecord::Base
     finish_lng = lng+1.5
     sql_query = "latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?"
 
-    Entry.where(sql_query, start_lat, finish_lat, start_lng, finish_lng, 9, 36.months.ago).find_each do |entry|
+    Entry.where(sql_query, start_lat, finish_lat, start_lng, finish_lng, 5, 24.months.ago).find_each do |entry|
       feed << entry.response_object
     end
-    feed.sample(1500).to_json
+    feed.sample(4000).to_json
   end
 
   def self.random_images(this_many)

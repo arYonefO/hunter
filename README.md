@@ -15,7 +15,6 @@ To find graffiti/street art hot-spots in cities around the world
  - Nav bar
  - Separate out data_ingesting from Entry model
  - Avoid broken images/Nuke broken images
- - Style popup boxes, deh ugly
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -50,7 +49,7 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - scale colour over pretty line
  - Adding a d3 scale to the marker colouring
  - build down arrow (Check out SIMBOL?)
-  - Deploy next version of app (v2)
+ - Deploy next version of app (v2)
  - Make the images flexible?
  - 1st pass at adding some more mobile friendly stylings
  - Load data up to AWS and point heroku deploy to it
@@ -69,8 +68,10 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Hstore the DB
  - Optimise database queries and returns (index zone? Use sql intersection)
  - Prime cache
-- Add legend to map
+ - Add legend to map
  - Reorganise CSS to use SASS properly
+ - Style popup boxes, deh ugly
+
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
