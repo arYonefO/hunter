@@ -16,6 +16,7 @@ gem 'pg'
 gem 'whenever'
 gem 'geocoder'
 gem 'database_cleaner'
+gem 'httparty'
 
 #analytics
 gem 'newrelic_rpm'
