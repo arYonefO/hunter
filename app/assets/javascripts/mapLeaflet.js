@@ -215,7 +215,7 @@ $(document).ready(function(){
 
     info.update = function() {
         this._div.innerHTML = '<h4>Graffi.so: Global Street Art Finder</h4>' +
-            '<b>' + 'Zoom in to explore';
+            '<b>' + '<span>Zoom in to explore</span>';
     };
 
     info.addTo(mapLeaflet);
