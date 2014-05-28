@@ -58,7 +58,7 @@ $(document).ready(function(){
     customLeaflet.ThumbnailIconExtended = L.Icon.extend({
     options: {
               iconSize:     [220, 220],
-              iconAnchor:   [5, 15]
+              iconAnchor:   [110, 0]
             }
     })
 
@@ -113,7 +113,7 @@ $(document).ready(function(){
                             )
         marker.on('click', customLeaflet.presentMarker);
         var linkToInstagram = "<a href='" + entry.url + "' target='_blank'>See this on Instagram</a>"
-        marker.bindPopup(linkToInstagram)
+        marker.bindPopup(linkToInstagram, {className: 'graff-popup', closeOnClick: false, closeButton: false})
         convertedPoints.push(marker)
       }
       if (opts['thumbnail'] === true){

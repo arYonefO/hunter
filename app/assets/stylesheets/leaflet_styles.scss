@@ -1,4 +1,4 @@
-/*Auto-complete styles*/
+/* Auto-complete styles*/
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
@@ -53,7 +53,7 @@
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
    font-size: 1.5em;
-   font-family: Georgia, Serif;
+   font: Arial, Helvetica, sans-serif;
    text-decoration: none;
    vertical-align: middle;
    margin-bottom: 7px;
@@ -101,4 +101,18 @@
   border-color: #fff;
   border-radius: 0.5px;
   border: solid;
+}
+
+/* Popup stylez */
+
+.graff-popup{
+  font: 14px/16px Arial, Helvetica, sans-serif;
+}
+
+.graff-popup a {
+  text-decoration: none;
+}
+
+.leaflet-popup-content{
+  margin: 7px 11px;
 }
