@@ -14,8 +14,7 @@ To find graffiti/street art hot-spots in cities around the world
  - User instructions
  - Nav bar
  - Separate out data_ingesting from Entry model
- - Avoid broken images/Nuke broken images
- - Change after_validation to after_create
+ - Add slick
 
 ### Things to get back to:
  - randomise pretty line, for both instances
@@ -72,7 +71,8 @@ Weed out scores with a low prox score, to avoid displaying shitty data or distra
  - Add legend to map
  - Reorganise CSS to use SASS properly
  - Style popup boxes, deh ugly
-
+ - Change after_validation to after_create
+ - Avoid broken images/Nuke broken images
 
 ### Issues:
  - Takes very long time to run RSPEC... (Assumed to be some issue with JS/D3/Capybara and the static pages. Tests turned off for now)
