@@ -13,7 +13,17 @@ class Entry < ActiveRecord::Base
   validates :longitude, :latitude, presence: true
   validates_with NullCheck
   geocoded_by :location
-  after_validation :proximity_score, :set_response_object
+  after_create :forbidden_check, :proximity_score, :set_response_object
+
+  def forbidden_check
+    response = HTTParty.get(self.thumbnail_url)
+      if response.code == 403
+        self.forbidden = true
+      else
+        self.forbidden = false
+      end
+    self.save
+  end
 
   def location
     [latitude.to_f, longitude.to_f]
@@ -157,9 +167,9 @@ class Entry < ActiveRecord::Base
     finish_lat = lat+1
     start_lng = lng-1.5
     finish_lng = lng+1.5
-    sql_query = "latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ?"
+    sql_query = "latitude >= ? AND latitude <= ? AND longitude >= ? AND longitude <= ? AND prox >= ? AND created_at >= ? AND forbidden = ?"
 
-    Entry.where(sql_query, start_lat, finish_lat, start_lng, finish_lng, 5, 24.months.ago).find_each do |entry|
+    Entry.where(sql_query, start_lat, finish_lat, start_lng, finish_lng, 5, 24.months.ago, false).find_each do |entry|
       feed << entry.response_object
     end
     feed.sample(4000).to_json
@@ -170,13 +180,23 @@ class Entry < ActiveRecord::Base
     until images.count == this_many do
       find_image = rand(80000)
       record = Entry.find_by(id: find_image)
-      if record
+      if record && record.forbidden == false
         url = record.url
         full_image_url = record.full_image_url
         images << [ full_image_url, url ]
       end
     end
     images
+  end
+
+  def self.broken_image_begone
+    Entry.where("forbidden != ?", false).find_each do |entry|
+      response = HTTParty.get(entry.thumbnail_url)
+      if response.code == 403
+        entry.forbidden = true
+        entry.save
+      end
+    end
   end
 
 end

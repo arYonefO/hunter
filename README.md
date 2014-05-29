@@ -15,6 +15,7 @@ To find graffiti/street art hot-spots in cities around the world
  - Nav bar
  - Separate out data_ingesting from Entry model
  - Avoid broken images/Nuke broken images
+ - Change after_validation to after_create
 
 ### Things to get back to:
  - randomise pretty line, for both instances

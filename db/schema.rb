@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415213400) do
+ActiveRecord::Schema.define(version: 20140528132250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140415213400) do
     t.decimal  "longitude",       precision: 10, scale: 7
     t.integer  "prox"
     t.hstore   "response_object"
+    t.boolean  "forbidden"
   end
 
   add_index "entries", ["created_at"], name: "index_entries_on_created_at", using: :btree
