@@ -113,8 +113,9 @@ $(document).ready(function(){
                             )
         marker.on('click', customLeaflet.presentMarker);
         var linkToInstagram = "<a href='" + entry.url + "' target='_blank'>See this on Instagram</a>"
-        marker.bindPopup(linkToInstagram, {className: 'graff-popup', closeOnClick: false, closeButton: false})
-        convertedPoints.push(marker)
+        marker.bindPopup(linkToInstagram, {className: 'graff-popup', closeOnClick: false, closeButton: false});
+        if( entry.thumb.length ){ convertedPoints.push(marker) }
+
       }
       if (opts['thumbnail'] === true){
         return markerCluster.addLayers(convertedPoints)
