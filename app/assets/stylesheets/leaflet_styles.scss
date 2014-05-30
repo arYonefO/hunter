@@ -1,3 +1,5 @@
+$aqua-green: #61cc8a;
+
 /* Auto-complete styles*/
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
@@ -36,22 +38,13 @@
 }
 
 #searching button {
-   border-top: 1px solid #97f7df;
-   background: #65d6a7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e999c), to(#65d6a7));
-   background: -webkit-linear-gradient(top, #3e999c, #65d6a7);
-   background: -moz-linear-gradient(top, #3e999c, #65d6a7);
-   background: -ms-linear-gradient(top, #3e999c, #65d6a7);
-   background: -o-linear-gradient(top, #3e999c, #65d6a7);
-   padding: 3.5px 13px;
-   -webkit-border-radius: 5px;
-   -moz-border-radius: 5px;
+   padding: 6px 8px;
+   color: $aqua-green;
+   font: 14px/16px Arial, Helvetica, sans-serif;
+   background: white;
+   background: rgba(255,255,255,0.6);
+   box-shadow: 0 0 15px rgba(0,0,0,0.2);
    border-radius: 5px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
    font-size: 1.5em;
    font: Arial, Helvetica, sans-serif;
    text-decoration: none;
@@ -76,7 +69,7 @@
 }
 .info h4 {
     margin: 0 0 5px;
-    color: #7dce9f;
+    color: $aqua-green;
 }
 
 .info span{

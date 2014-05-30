@@ -10,6 +10,7 @@ $low-feature: #0C5244;
 $high-feature: #1ED6B1;
 $purple-main: #9c5ab8;
 $off-white: #edede1;
+$aqua-green: #61cc8a;
 
 
 * {
@@ -21,16 +22,12 @@ $off-white: #edede1;
   box-sizing: border-box;
 }
 
+
 @import url(http://fonts.googleapis.com/css?family=Calligraffitti);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
-@font-face {
-  font-family: "doublePica";
-  src: url(http://www.google.com/fonts#UsePlace:use/Collection:IM+Fell+Double+Pica)
-  format("truetype");
-}
-
-h1 {
-  /*font-family: "doublePica", sans-serif;*/
+ul {
+  list-style-type: none;
 }
 
 html {
@@ -179,7 +176,7 @@ footer {
 }
 
 .center-box {
-  width: 260px;
+  width: 280px;
   min-height: auto;
   margin: 10px;
   padding: 10px;
@@ -187,12 +184,48 @@ footer {
   -webkit-overflow: hidden;
 }
 
+.text-bearer{
+  padding: 10px;
+  color: $aqua-green;
+  font: 14px/16px 'Lato', Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0 0 15px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  font: 18px "Lato", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  margin: 3px 7px 20px 7px;
+  font-weight: bold;
+}
+
+.text-bearer em{
+  color: #ce1e33;
+}
+
+.text-bearer span{
+  text-decoration: line-through
+}
+
+.slick-prev {
+  left: 85px;
+  top: 380px;
+}
+
+.slick-next {
+  right: 85px;
+  top: 380px;
+}
+
 #title {
   margin: 0px auto;
   text-align: center;
   padding: 5px;
   font-size: 3em;
-  font-family: 'Calligraffitti', cursive;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
   font-weight: 800;
 }
 
