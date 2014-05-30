@@ -30,10 +30,10 @@ every 2.hours do
   # runner "Entry.hoover_tag('precious_graffiti')", :environment => 'development'
 end
 
-every 4.hours do
-  runner "Entry.hoover_tag('gatekunst')", :environment => 'development'
-end
+# every 4.hours do
+#   runner "Entry.hoover_tag('gatekunst')", :environment => 'development'
+# end
 
-every 5.hours do
-  runner "Entry.hoover_tag('стритарт')", :environment => 'development'
-end
+# every 5.hours do
+#   runner "Entry.hoover_tag('стритарт')", :environment => 'development'
+# end
