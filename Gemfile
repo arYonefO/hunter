@@ -19,7 +19,7 @@ gem 'database_cleaner'
 gem 'httparty'
 
 #analytics
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 # web server
 gem 'unicorn'
