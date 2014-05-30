@@ -132,7 +132,7 @@ $(document).ready(function(){
         var entry = data[i]
         latlngs.push(L.latLng(entry.lat, entry.lng))
       }
-      return L.heatLayer(latlngs, {gradient: {0.3: "#FFD700", 0.4:"#34495e", 0.8: "#FFDF00"}, blur:40});
+      return L.heatLayer(latlngs, {gradient: {0.3: "#FFD700", 0.4:"#34495e", 0.8: "#0AC899"}, blur:40});
     }
 
     // Request data for all cases
