@@ -2,6 +2,7 @@ var mapLeaflet,
     backgroundTiles,
     customLeaflet = {}
 
+
     customLeaflet.pickStartCity = function(){
       var cities = [
       [51.505,-0.09],

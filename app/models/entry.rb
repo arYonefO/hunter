@@ -73,7 +73,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.chase_tag(tag)
-    Entry.ingest(Instagram.tag_recent_media(tag))
+    Entry.ingest(Instagram.tag_recent_media(URI.escape(tag)))
   end
 
   def self.chase_user(user)
@@ -135,12 +135,12 @@ class Entry < ActiveRecord::Base
     query_tag = Tag.where(:label => tag).first_or_create
     tag = URI.escape(tag)
     if query_tag.next_max_tag_id.nil?
-      hoover_ingest(Instagram.tag_recent_media(tag), query_tag)
+      hoover_ingest(Instagram.tag_recent_media(URI.escape(tag)), query_tag)
     end
     30.times do |n|
       next_id = query_tag.next_max_tag_id
       p "This is the max id: #{next_id}"
-      hoover_ingest(Instagram.tag_recent_media(tag, :max_id => next_id), query_tag)
+      hoover_ingest(Instagram.tag_recent_media(URI.escape(tag), :max_id => next_id), query_tag)
       p 'another page done'
     end
   end
