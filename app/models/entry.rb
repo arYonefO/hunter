@@ -19,10 +19,26 @@ class Entry < ActiveRecord::Base
     response = HTTParty.get(self.thumbnail_url)
       if response.code == 403
         self.forbidden = true
+      elsif response.code == 404
+        self.forbidden = true
       else
         self.forbidden = false
       end
     self.save
+  end
+
+  def forbidden_check_update
+    response = HTTParty.get(self.thumbnail_url)
+      if response.code == 403
+        self.forbidden = true
+        self.save
+
+      elsif response.code == 404
+        self.forbidden = true
+        self.save
+      else
+
+      end
   end
 
   def location
@@ -137,7 +153,7 @@ class Entry < ActiveRecord::Base
     if query_tag.next_max_tag_id.nil?
       hoover_ingest(Instagram.tag_recent_media(URI.escape(tag)), query_tag)
     end
-    30.times do |n|
+    300.times do |n|
       next_id = query_tag.next_max_tag_id
       p "This is the max id: #{next_id}"
       hoover_ingest(Instagram.tag_recent_media(URI.escape(tag), :max_id => next_id), query_tag)

@@ -1,13 +1,13 @@
 namespace :db do
   desc "Poll instagram for appropriate data"
   task populate: :environment do
-    Entry.chase_tag('rsa_graffiti')
-    Entry.chase_tag('DSB_graff')
-    Entry.chase_user('nemans')
-    Entry.chase_tag('стритарт')
-    Entry.chase_tag('arteurbano')
-    Entry.chase_tag('gatekunst')
-    Entry.chase_tag('artederua')
+    Entry.hoover_tag('tv_streetart')
+    # Entry.hoover_tag('DSB_graff')
+    # Entry.chase_user('nemans')
+    # Entry.hoover_tag('стритарт')
+    # Entry.hoover_tag('arteurbano')
+    # Entry.hoover_tag('gatekunst')
+    # Entry.hoover_tag('artederua')
   end
 
   desc "hoover the selected user"
@@ -29,6 +29,11 @@ namespace :db do
   task hoover_tag: :environment do
     Entry.hoover_tag("ストリートアート")
   end
+
+  desc "Update Forbidden tags"
+  task update_forbidden: :environment do
+    Entry.forbidden_check_update
+  end
 end
 
 namespace :cache do
@@ -40,10 +45,16 @@ namespace :cache do
   end
 end
 
-['etamcru', 'sztukaulicy', 'etamcrew', 'saineretam', 'katowicestreetart',
+
+finishedTags = [
+  'etamcru', 'sztukaulicy', 'etamcrew', 'saineretam', 'katowicestreetart',
   'streetartinpoland', 'streetart_bakkem', 'gatekunst', 'capetownstreetart',
   'стритарт', 'istanbulstreetart', 'streetartbogota','bogotastreetart',
   'bristolstreetart', 'santiagostreetart', 'buenosairesstreetart',
   'streetartbuenosaires', 'streetartlisbon', 'lisbonstreetart', 'abyss607',
   'canberragraff',"ストリートアート"
+]
+# Can't remember if this distinction is valid
+unfinishedTags = [
+  'tv_streetart', 'DSB_graff'
 ]
